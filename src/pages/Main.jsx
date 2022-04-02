@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Main = () => {
+function Main() {
     return (
         <div className="container">
             <div className="header">
