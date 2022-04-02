@@ -4,6 +4,8 @@ import Button from 'react-bootstrap/Button';
 import "./Charity.css";
 import { useState } from "react";
 
+// Web3
+
 function Charity() {
     const [showDonate, setShowDonate] = useState(false);
 
@@ -18,16 +20,16 @@ function Charity() {
     return (
         <div className="container">
             <div className="wallet-connect">
-                <p className="wallet">Connect wallet</p>
+                <Button className="wallet">Connect wallet</Button>
             </div>
             <div className="header">
                 <h2>$1,000,000 raised</h2>
                 <h1>Ukrainian Crisis</h1>
                 <p>Stand with the people of Ukraine.</p>
                 <div className="buttons">
-                    <Button onClick={handleShowDonate}>Donate</Button>
+                    <Button onClick={handleShowDonate} className="donate-button">Donate</Button>
                     <div className="spacer"> </div>
-                    <Button onClick={handleShowRaise}>Raise</Button>
+                    <Button onClick={handleShowRaise} className="raise-button">Raise</Button>
                 </div>
             </div>
             <div className="leaderboard">
