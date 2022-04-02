@@ -1,3 +1,80 @@
-@media (prefers-reduced-motion: no-preference) {
-  
+html {
+  background-color: #0F0B30;
 }
+
+body {
+  background: url(assets/gradient.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-left: 12rem;
+  padding-right: 12rem;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 10rem;
+  line-height: 9rem;
+  background: linear-gradient(90deg, #00F0FF 0%, #5773FF 40%, #FF007A 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+h2 {
+  color: white;
+  font-weight: 400;
+  font-size: 3rem;
+  line-height: 4.375rem;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 4rem;
+  line-height: 4rem;
+  background: linear-gradient(90deg, #00F0FF 0%, #5773FF 25%, #FF007A 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+h4 {
+  font-weight: 700;
+  font-size: 3.75rem;
+  line-height: 4.5rem;
+  background: linear-gradient(90deg, #00F0FF 0%, #5773FF 50%, #FF007A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+h5 {
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 4.375rem;
+  background: linear-gradient(90deg, #00F0FF 0%, #5773FF 50%, #FF007A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+Link {
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+  font-size: 1.75rem;
+  line-height: 2.5rem;
+}
+
+p {
+  color: white;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.875rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {}

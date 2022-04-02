@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import "./Main.css";
 
 function Main() {
@@ -11,22 +11,27 @@ function Main() {
                 <p>Give effectively to the global causes you care about.</p>
             </div>
             <div className="prop">
-                {/* insert NFT image here */}
-                <h3>A personalized NFT will represent your contribution permenantly on the blockchain.</h3>
+                <h5>A personalized NFT will represent your contribution permenantly on the blockchain.</h5>
             </div>
             <div className="causes">
-                <h3>Causes we support</h3>
+                <h4>Causes we support</h4>
                 <p>We onboard charities, non-profits, organizations, and institions in
                     need of fundings - and make it easy for your to contribute.</p>
-                <div className="cause-boc">
-                    <h3>Ukrainian Crisis</h3>
-                    <p>Stand with the people of Ukraine during this time.</p>
-                    <Link to="/ukrainian-crisis">Donate</Link>
+                <div className="cause-block">
+                    <div className="cause-header">
+                        <h3>Ukrainian Crisis</h3>
+                        <p>Stand with the people of Ukraine during this time.</p>
+                    </div>
+                    <NavLink 
+                        to="/ukrainian-crisis" 
+                        className="link"
+                    >
+                        Donate
+                    </NavLink>
                 </div>
-                <p>and more to come.</p>
             </div>
             <div className="leaderboard">
-                <h3>Leaderboard</h3>
+                <h4>Leaderboard</h4>
                 <p>The top givers, globally.</p>
                 {/* implement */}
             </div>

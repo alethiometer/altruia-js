@@ -4,6 +4,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
+  NavLink,
   Link,
   Redirect
 } from "react-router-dom";
