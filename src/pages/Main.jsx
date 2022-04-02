@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Main.css";
 
 function Main() {
     return (
         <div className="container">
             <div className="header">
                 <h2>Donate crypto with</h2>
-                <h1>Altrui</h1>
+                <h1>Altruia</h1>
                 <p>Give effectively to the global causes you care about.</p>
             </div>
             <div className="prop">
