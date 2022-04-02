@@ -1,8 +1,17 @@
 import logo from "./logo.svg";
 import "./App.css";
 import React, { Component } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Link,
+  Redirect
+} from "react-router-dom";
+import Main from "./pages/Main";
 import web3 from './web3';
 import donations from './donations';
+
  
 class App extends React.Component {
   componentDidMount() {
