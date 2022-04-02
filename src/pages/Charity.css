@@ -1,0 +1,39 @@
+.wallet-connect {
+    display: flex;
+    justify-content: right;
+    padding-top: 2rem;
+    padding-right: -1rem;
+}
+
+.wallet {
+    border-radius: 50px;
+    border: 2px solid #00F0FF;
+    padding: .2rem 1rem;
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+    width: 10rem;
+    align-items: center;
+    text-align: center;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+}
+
+h1 {
+    font-size: 7rem;
+    line-height: 7rem;
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.spacer {
+    padding: 0.5rem;
+}
