@@ -17,17 +17,25 @@ function Main() {
                 <h4>Causes we support</h4>
                 <p>We onboard charities, non-profits, organizations, and institions in
                     need of fundings - and make it easy for your to contribute.</p>
-                <div className="cause-block">
-                    <div className="cause-header">
-                        <h3>Ukrainian Crisis</h3>
-                        <p>Stand with the people of Ukraine during this time.</p>
+                <div className="carousel">
+                    <div className="cause-block">
+                        <div className="cause-header">
+                            <h3>Ukrainian Crisis</h3>
+                            <p>Stand with the people of Ukraine during this time.</p>
+                        </div>
+                        <NavLink 
+                            to="/ukrainian-crisis" 
+                            className="link"
+                        >
+                            Donate
+                        </NavLink>
                     </div>
-                    <NavLink 
-                        to="/ukrainian-crisis" 
-                        className="link"
-                    >
-                        Donate
-                    </NavLink>
+                    <div className="cause-block">
+                        <div className="cause-header">
+                            <h3>In progress...</h3>
+                            <p>We are in the process of onboarding the next charity.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div className="leaderboard">
