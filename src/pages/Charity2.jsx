@@ -87,12 +87,12 @@ function Charity2() {
 
             donations.methods.getGiven("0x7cF2eBb5Ca55A8bd671A020F8BDbAF07f60F26C1", _account).call().then(result => {
                 let myTotalGiven = parseInt(result) / (10 ** 18);
-                let givenText = "Donated: " + myTotalGiven.toString() + " ETH";
+                let givenText = "You've given $" + myTotalGiven.toString() + " ETH.";
                 document.getElementById("myUserGiven").innerHTML = givenText;
 
                 donations.methods.getRaised("0x7cF2eBb5Ca55A8bd671A020F8BDbAF07f60F26C1", _account).call().then(result2 => {
                     let myTotalRaised = parseInt(result2) / (10 ** 18);
-                    let raisedText = "Raised: " + myTotalRaised.toString() + " ETH";
+                    let raisedText = "You've raised $" + myTotalRaised.toString() + " ETH.";
                     document.getElementById("myUserRaised").innerHTML = raisedText;
 
                     let userGiven = myTotalGiven * (10 ** 18);
@@ -613,8 +613,6 @@ function Charity2() {
             <div className="wallet-connect">
                 {account ? <div className="account-container">
                         <Button className="wallet-connected">Wallet connected </Button>
-                        <p id="myUserGiven" className="account-info">Total given: </p>
-                        <p id="myUserRaised" className="account-info">Total raised:</p>
                     </div>
                     : <div>
                         <Button onClick={connectWalletHandler} className="wallet-not-connected">Connect wallet</Button>
@@ -630,38 +628,6 @@ function Charity2() {
                     <Button onClick={handleShowRaise} className="raise-button">Raise</Button>
                 </div>
 
-                <div className="userStats">
-                    <img src={diamondDiamond} className="userNFT" id="nft25" />
-                    <img src={diamondGold} className="userNFT" id="nft24" />
-                    <img src={diamondSilver} className="userNFT" id="nft23" />
-                    <img src={diamondBronze} className="userNFT" id="nft22" />
-                    <img src={diamondWood} className="userNFT" id="nft21" />
-                    <img src={goldDiamond} className="userNFT" id="nft20" />
-                    <img src={goldGold} className="userNFT" id="nft19" />
-                    <img src={goldSilver} className="userNFT" id="nft18" />
-                    <img src={goldBronze} className="userNFT" id="nft17" />
-                    <img src={goldWood} className="userNFT" id="nft16" />
-                    <img src={silverDiamond} className="userNFT" id="nft15" />
-                    <img src={silverGold} className="userNFT" id="nft14" />
-                    <img src={silverSilver} className="userNFT" id="nft13" />
-                    <img src={silverBronze} className="userNFT" id="nft12" />
-                    <img src={silverWood} className="userNFT" id="nft11" />
-                    <img src={bronzeDiamond} className="userNFT" id="nft10" />
-                    <img src={bronzeGold} className="userNFT" id="nft9" />
-                    <img src={bronzeSilver} className="userNFT" id="nft8" />
-                    <img src={bronzeBronze} className="userNFT" id="nft7" />
-                    <img src={bronzeWood} className="userNFT" id="nft6" />
-                    <img src={woodDiamond} className="userNFT" id="nft5" />
-                    <img src={woodGold} className="userNFT" id="nft4" />
-                    <img src={woodSilver} className="userNFT" id="nft3" />
-                    <img src={woodBronze} className="userNFT" id="nft2" />
-                    <img src={woodWood} className="userNFT" id="nft1" />
-                    <img src={noNft} className="userNFT" id="nft0" />
-                </div>
-                <div>
-                    <a href="https://testnets.opensea.io/collection/altruia-x-givewell-donation-collection" target="_blank">View Colletion on OpenSea</a>
-                </div>
-
                 <div className="mint-div promptMint" id="promptMint">
                     <div className="mint-div-head">
                         <img src={mintemoji} className="mint-div-img" />
@@ -670,7 +636,47 @@ function Charity2() {
                     </div>
                     <Button onClick={handleShowMint} className="mint-button">Mint</Button>
                 </div>
-
+                <div className="user-NFT">
+                    <div className="userStats">
+                        <img src={diamondDiamond} className="userNFT" id="nft25" />
+                        <img src={diamondGold} className="userNFT" id="nft24" />
+                        <img src={diamondSilver} className="userNFT" id="nft23" />
+                        <img src={diamondBronze} className="userNFT" id="nft22" />
+                        <img src={diamondWood} className="userNFT" id="nft21" />
+                        <img src={goldDiamond} className="userNFT" id="nft20" />
+                        <img src={goldGold} className="userNFT" id="nft19" />
+                        <img src={goldSilver} className="userNFT" id="nft18" />
+                        <img src={goldBronze} className="userNFT" id="nft17" />
+                        <img src={goldWood} className="userNFT" id="nft16" />
+                        <img src={silverDiamond} className="userNFT" id="nft15" />
+                        <img src={silverGold} className="userNFT" id="nft14" />
+                        <img src={silverSilver} className="userNFT" id="nft13" />
+                        <img src={silverBronze} className="userNFT" id="nft12" />
+                        <img src={silverWood} className="userNFT" id="nft11" />
+                        <img src={bronzeDiamond} className="userNFT" id="nft10" />
+                        <img src={bronzeGold} className="userNFT" id="nft9" />
+                        <img src={bronzeSilver} className="userNFT" id="nft8" />
+                        <img src={bronzeBronze} className="userNFT" id="nft7" />
+                        <img src={bronzeWood} className="userNFT" id="nft6" />
+                        <img src={woodDiamond} className="userNFT" id="nft5" />
+                        <img src={woodGold} className="userNFT" id="nft4" />
+                        <img src={woodSilver} className="userNFT" id="nft3" />
+                        <img src={woodBronze} className="userNFT" id="nft2" />
+                        <img src={woodWood} className="userNFT" id="nft1" />
+                        <img src={noNft} className="userNFT" id="nft0" />
+                    </div>
+                    <div className="spacer"></div>
+                    <div>
+                    {account ? <div className="nft-desc">
+                        <h5 id="myUserGiven" className=""></h5>
+                        <h5 id="myUserRaised" className=""></h5>
+                    </div>
+                        : <h5>You have not donated or raised quite yet. Get started above!</h5>}
+                        <div>
+                    <a href="https://testnets.opensea.io/collection/altruia-x-givewell-donation-collection" className="opensea">View the collection on OpenSea!</a>
+                    </div>
+                </div>
+                </div>
                 <div className="mint-div promptUpdate" id="promptUpdate">
                     <div className="mint-div-head">
                         <img src={mintemoji} className="mint-div-img" />
@@ -681,6 +687,7 @@ function Charity2() {
                 </div>
 
             </div>
+
             <div className="leaderboard">
                 <div className="leaderboard-header">
                     <h3>Leaderboard</h3>
