@@ -629,7 +629,7 @@ function Charity() {
                     <div className="spacer"> </div>
                     <Button onClick={handleShowRaise} className="raise-button">Raise</Button>
                 </div>
-
+                
                 <div className="userStats">
                     <img src={diamondDiamond} className="userNFT" id="nft25" />
                     <img src={diamondGold} className="userNFT" id="nft24" />

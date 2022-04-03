@@ -11,6 +11,32 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
+import woodBronze from './GiveWell 02.png';
+import woodDiamond from './GiveWell 05.png';
+import woodGold from './GiveWell 04.png';
+import woodSilver from './GiveWell 03.png';
+import woodWood from './GiveWell 01.png';
+import bronzeBronze from './GiveWell 07.png';
+import bronzeDiamond from './GiveWell 10.png';
+import bronzeGold from './GiveWell 09.png';
+import bronzeSilver from './GiveWell 08.png';
+import bronzeWood from './GiveWell 06.png';
+import silverBronze from './GiveWell 12.png';
+import silverDiamond from './GiveWell 15.png';
+import silverGold from './GiveWell 14.png';
+import silverSilver from './GiveWell 13.png';
+import silverWood from './GiveWell 11.png';
+import goldBronze from './GiveWell 17.png';
+import goldDiamond from './GiveWell 20.png';
+import goldGold from './GiveWell 19.png';
+import goldSilver from './GiveWell 18.png';
+import goldWood from './GiveWell 16.png';
+import diamondBronze from './GiveWell 22.png';
+import diamondDiamond from './GiveWell 25.png';
+import diamondGold from './GiveWell 24.png';
+import diamondSilver from './GiveWell 23.png';
+import diamondWood from './GiveWell 21.png';
+import noNft from './noNft.png';
 
 import Web3 from "web3";
 import donations from "../donations";
@@ -578,6 +604,35 @@ function Charity2() {
                     <p>Top donors to GiveWell</p>
                 </div>
                 <img src={leaderboard} className="leaderboard-img" />
+            </div>
+            <h4 className="gallery-header">Tokens of appreciation</h4>
+                <p className="gallery-header">The set of NFTs that represent your contribution to GiveWell.</p>
+            <div className="NFT-grid">
+                <img src={diamondDiamond} className="NFT"/>
+                <img src={diamondGold} className="NFT"/>
+                <img src={diamondSilver} className="NFT"/>
+                <img src={diamondBronze} className="NFT"/>
+                <img src={diamondWood} className="NFT"/>
+                <img src={goldDiamond} className="NFT"/>
+                <img src={goldGold} className="NFT"/>
+                <img src={goldSilver} className="NFT"/>
+                <img src={goldBronze} className="NFT"/>
+                <img src={goldWood} className="NFT"/>
+                <img src={silverDiamond} className="NFT"/>
+                <img src={silverGold} className="NFT"/>
+                <img src={silverSilver} className="NFT"/>
+                <img src={silverBronze} className="NFT"/>
+                <img src={silverWood} className="NFT"/>
+                <img src={bronzeDiamond} className="NFT"/>
+                <img src={bronzeGold} className="NFT"/>
+                <img src={bronzeSilver} className="NFT"/>
+                <img src={bronzeBronze} className="NFT"/>
+                <img src={bronzeWood} className="NFT"/>
+                <img src={woodDiamond} className="NFT"/>
+                <img src={woodGold} className="NFT"/>
+                <img src={woodSilver} className="NFT"/>
+                <img src={woodBronze} className="NFT"/>
+                <img src={woodWood} className="NFT"/>
             </div>
 
             <Modal show={showDonate} onHide={handleCloseDonate} className="donateModal" size="lg">
