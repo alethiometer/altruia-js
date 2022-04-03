@@ -6,6 +6,7 @@ import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import "./Charity.css";
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 
@@ -17,6 +18,7 @@ function Charity() {
     const [account, setAccount] = useState(null);
     const [copied, setCopied] = useState(false);
     const [updateMint, setUpdateMint] = useState(false);
+    const [referrer, setReferrer] = useState(null);
 
     const checkWalletIsConnected = async () => {
         const { ethereum } = window;
@@ -176,7 +178,7 @@ function Charity() {
                     <Modal.Title><h5>Raise</h5></Modal.Title>
                     <p className="modalSubtitle">Invite others to contribute through your referral link.</p>
                     <div className="invite-row">
-                        <p className="inviteLink">https://altruia.com/ukrainian-crisis?ref=0x123978561298376128346</p>
+                        <p className="inviteLink">{`https://altruia.com/ukrainian-crisis?ref=${account}`}</p>
                         <div className="spacer"></div>
                         {copied ? <Button variant="primary" className="copy-link-button">Copied</Button> :
                             <Button variant="primary" onClick={() => {
@@ -190,12 +192,13 @@ function Charity() {
                 </Modal.Body>
             </Modal>
 
-            <Modal show={showMint} onHide={handleCloseMint} className="raiseModal" size="lg">
+            <Modal show={showMint} onHide={handleCloseMint} className="mintModal" size="lg">
                 <Modal.Header closeButton className="modalHeader btn-close-white">
                 </Modal.Header>
                 <Modal.Body className="justify-content-center modalBody">
                     <Modal.Title><h5>Mint</h5></Modal.Title>
-                    <p className="modalSubtitle">If this is your first donation to the Ukrainian Crisis, mint your NFT! Otherwise, update your NFT here to reflect any new contributions.</p>
+                    {copied ? <p className="modalSubtitle">As a token of your first donation to the Ukrainian Crisis, mint your NFT!</p>
+                    : <p className="modalSubtitle">Update your NFT here to reflect your latest contributions!</p>}
                     <div className="invite-row">
                         {copied ? <Button variant="primary" className="copy-link-button">Update mint</Button> :
                             <Button variant="primary" className="copy-link-button">Mint</Button>
