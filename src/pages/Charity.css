@@ -262,3 +262,7 @@ h1 {
     padding-bottom: 15rem;
     padding-top: 3rem;
 }
+
+.userNFT {
+    display: none;
+}
