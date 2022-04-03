@@ -15,9 +15,8 @@ let myAccount;
 function Charity() {
     const [account, setAccount] = useState(null);
     const [copied, setCopied] = useState(false);
-    const [amount, setAmount] = useState(0);
 
-    const checkWalletIsConnected = () => {
+    const checkWalletIsConnected = async () => {
         const { ethereum } = window;
 
         if (!ethereum) {
@@ -25,6 +24,15 @@ function Charity() {
             return;
         } else {
             console.log("Wallet exists! We're ready to go!")
+        }
+
+        const accounts = await ethereum.request({ method: 'eth_accounts' });
+
+        if (accounts.length !== 0) {
+            const account = accounts[0];
+            setAccount(account);
+        } else {
+            console.log("No authorized account yet.")
         }
     }
     const connectWalletHandler = async () => {
