@@ -48,7 +48,7 @@ function Charity() {
     const checkTotalRaised = async() => {
         donations.methods.getTotalRaised("0x92644E66DACA94F720875A93a8df011CB17dbFC0").call().then(result => {
             let totalRaised = parseInt(result)/(10**18);
-            let raisedText = totalRaised.toString() +" ETH raised through Altruia"
+            let raisedText = totalRaised.toString() +" total ETH raised"
             document.getElementById("totalRaisedLabel").innerHTML = raisedText;
         });
     }
@@ -490,7 +490,7 @@ function Charity() {
                     </div>}
             </div>
             <div className="header">
-                <h2 id="totalRaisedLabel">$1,000,000 raised</h2>
+                <h2 id="totalRaisedLabel">0.00 Total ETH raised</h2>
                 <h1>Ukrainian Crisis</h1>
                 <p>Stand with the people of Ukraine.</p>
                 <div className="buttons">
