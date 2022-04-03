@@ -1,6 +1,7 @@
 import React from "react";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import "./Charity.css";
 import { useState } from "react";
 
@@ -42,7 +43,15 @@ function Charity() {
                 <Modal.Header closeButton>
                     <Modal.Title><h5>Donate</h5></Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Contribute a standard amount or suggest your own.</Modal.Body>
+                <Modal.Body>
+                    Contribute a standard amount or suggest your own.
+
+                </Modal.Body>
+                <Form>
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                        <Form.Control type="text" placeholder="Amount" />
+                    </Form.Group>
+                </Form>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleCloseDonate}>
                         Close
