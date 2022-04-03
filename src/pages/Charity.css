@@ -55,7 +55,8 @@ h1 {
 .send-button {
     display: inline;
     width: 140px;
-
+    margin-top: 2rem;
+    margin-bottom: 4rem;
 }
 
 .spacer {
@@ -103,7 +104,7 @@ h1 {
 
 .modal-content {
     background-image: linear-gradient(to right, #0C3A5B , #0F0B30);
-    border: 4px solid #FE007A;
+    border: 2px solid #00F0FF;
     border-radius: 40px;
     padding-bottom: 10px;
     padding-top: 10px;
@@ -117,12 +118,13 @@ h1 {
     text-align: center;
 }
 
-.modal-title {
+.modalTitle {
     text-align: center;
 }
 
 .modalBody {
     padding-top: 0;
+    padding-bottom: 4rem;
 }
 
 .modalFooter {
@@ -136,6 +138,7 @@ h1 {
 
 .donateModal, .raiseModal {
     text-align: center;
+    align-self: center;
 }
 
 .modalTitle {
@@ -145,5 +148,24 @@ h1 {
 }
 
 .inviteLink {
-    font-size: 13px;
+    margin-top: 1rem;
+    font-size: 1rem;
+    border-radius: 50px;
+    border: 2px solid #00F0FF;
+    padding: .15rem 1.5rem;
+    color: white;
+    font-weight: 300;
+    background-color: transparent;
+}
+
+.copy-link-button {
+    font-size: 1rem;
+}
+
+.invite-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-top: 2rem;
 }

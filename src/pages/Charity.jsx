@@ -12,6 +12,8 @@ import donations from "../donations";
 
 function Charity() {
     const [account, setAccount] = useState(null);
+    const [copied, setCopied] = useState(false);
+    const [amount, setAmount] = useState(0);
 
     const checkWalletIsConnected = () => {
         const { ethereum } = window;
@@ -50,7 +52,7 @@ function Charity() {
 
     // Raise modal
     const [showRaise, setShowRaise] = useState(false);
-    const handleCloseRaise = () => setShowRaise(false);
+    const handleCloseRaise = () => {setShowRaise(false); setCopied(false);}
     const handleShowRaise = () => setShowRaise(true);
 
     return (
@@ -75,14 +77,13 @@ function Charity() {
                 {/* implement */}
             </div>
 
-            <Modal show={showDonate} onHide={handleCloseDonate} className="donateModal">
+            <Modal show={showDonate} onHide={handleCloseDonate} className="donateModal" size="lg">
                 <Modal.Header closeButton className="modalHeader btn-close-white">
                 </Modal.Header>
                 <Modal.Body className="justify-content-center modalBody">
                     <Modal.Title><div><h5 className="modalTitle">Donate</h5></div></Modal.Title>
-                    <p>Contribute a standard amount or suggest your own.</p>
+                    <p className="modalSubtitle">Contribute a standard amount or suggest your own.</p>
                 </Modal.Body>
-
                 <Form>
                     <Form.Group className="mb-3 d-flex justify-content-center" controlId="exampleForm.ControlInput1">
                         <Form.Control type="text" className="amountInput shadow-none mb-3" placeholder="Amount" />
@@ -94,22 +95,26 @@ function Charity() {
                         Send
                     </Button>
                 </Form>
-
-
-
-
             </Modal>
 
-            <Modal show={showRaise} onHide={handleCloseRaise} className="raiseModal">
+            <Modal show={showRaise} onHide={handleCloseRaise} className="raiseModal"  size="lg">
             <Modal.Header closeButton className="modalHeader btn-close-white">
                 </Modal.Header>
                 <Modal.Body className="justify-content-center modalBody">
                     <Modal.Title><h5>Raise</h5></Modal.Title>
-                    <p>Invite others to contribute through your referral link.</p>
-                    <p className="inviteLink">https://altruia.com/ukrainian-crisis?ref=0x123978561298376128346</p>
-                    <Button variant="primary" onClick={handleCloseDonate} className="copy-link-button">
-                        Copy Link
-                    </Button>
+                    <p className="modalSubtitle">Invite others to contribute through your referral link.</p>
+                    <div className="invite-row">
+                        <p className="inviteLink">https://altruia.com/ukrainian-crisis?ref=0x123978561298376128346</p>
+                        <div className="spacer"></div>
+                        {copied ? <Button variant="primary" className="copy-link-button">Copied</Button> :
+                        <Button variant="primary" onClick={() => {
+                            navigator.clipboard.writeText("https://altruia.com/ukrainian-crisis?ref=0x123978561298376128346");
+                            setCopied(true);
+                        }} className="copy-link-button">
+                            Copy
+                        </Button>
+                        }
+                    </div>
                 </Modal.Body>
             </Modal>
         </div>
