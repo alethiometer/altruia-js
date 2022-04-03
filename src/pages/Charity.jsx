@@ -483,9 +483,11 @@ function Charity() {
         <div className="container">
             <div className="wallet-connect">
                 {account ? <Button className="wallet-connected">Wallet connected </Button>
-                    : <Button onClick={connectWalletHandler} className="wallet-not-connected">Connect wallet</Button>}
-                <p>Total given: {}</p>
-                <p>Total raised: {}</p>
+                    : <div>
+                        <Button onClick={connectWalletHandler} className="wallet-not-connected">Connect wallet</Button>
+                        <p>Total given: {}</p>
+                        <p>Total raised: {}</p>
+                    </div>}
             </div>
             <div className="header">
                 <h2 id="totalRaisedLabel">$1,000,000 raised</h2>
