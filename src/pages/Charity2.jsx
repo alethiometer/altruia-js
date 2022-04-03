@@ -45,7 +45,7 @@ function Charity2() {
     }
 
     const checkTotalRaised = async() => {
-        donations.methods.getTotalRaised("0x165CD37b4C644C2921454429E7F9358d18A45e14").call().then(result => {
+        donations.methods.getTotalRaised("0x7cF2eBb5Ca55A8bd671A020F8BDbAF07f60F26C1").call().then(result => {
             let totalRaised = parseInt(result)/(10**18);
             let raisedText = totalRaised.toString() +" total ETH raised"
             document.getElementById("totalRaisedLabel").innerHTML = raisedText;
@@ -53,17 +53,19 @@ function Charity2() {
     }
  
     const checkAccount = async(_account) => {
-        donations.methods.getGiven("0x165CD37b4C644C2921454429E7F9358d18A45e14", _account).call().then(result => {
+        donations.methods.getGiven("0x7cF2eBb5Ca55A8bd671A020F8BDbAF07f60F26C1", _account).call().then(result => {
             let myTotalGiven = parseInt(result)/(10**18);
             let givenText = "Donated: "+myTotalGiven.toString()+" ETH";
             document.getElementById("myUserGiven").innerHTML = givenText;
         });
-        donations.methods.getRaised("0x165CD37b4C644C2921454429E7F9358d18A45e14", _account).call().then(result2 => {
+        donations.methods.getRaised("0x7cF2eBb5Ca55A8bd671A020F8BDbAF07f60F26C1", _account).call().then(result2 => {
             let myTotalRaised = parseInt(result2)/(10**18);
             let raisedText = "Raised: "+myTotalRaised.toString()+" ETH";
             document.getElementById("myUserRaised").innerHTML = raisedText;
         });
     }
+
+    //0x7cF2eBb5Ca55A8bd671A020F8BDbAF07f60F26C1
 
     const connectWalletHandler = async () => {
         const { ethereum } = window;
@@ -89,9 +91,9 @@ function Charity2() {
         //getters
         givewell.methods.getTokenByUser(account).call().then(result => {
             let userToken = parseInt(result);
-            donations.methods.getGiven("0x165CD37b4C644C2921454429E7F9358d18A45e14", account).call().then(result => {
+            donations.methods.getGiven("0x7cF2eBb5Ca55A8bd671A020F8BDbAF07f60F26C1", account).call().then(result => {
                 let userGiven = parseInt(result);
-                donations.methods.getRaised("0x165CD37b4C644C2921454429E7F9358d18A45e14", account).call().then(result => {
+                donations.methods.getRaised("0x7cF2eBb5Ca55A8bd671A020F8BDbAF07f60F26C1", account).call().then(result => {
                     let userRaised = parseInt(result);
                     const amount = parseFloat(document.getElementById("inputAmount").value);
 
@@ -99,7 +101,7 @@ function Charity2() {
                     if (urlParams.has('ref')) {
                         let referral = urlParams.get("ref");
 
-                        donations.methods.donateWithRefferral("0x165CD37b4C644C2921454429E7F9358d18A45e14", referral).send({ from: account, value: amount * 1000000000000000000 }).then(result => {
+                        donations.methods.donateWithRefferral("0x7cF2eBb5Ca55A8bd671A020F8BDbAF07f60F26C1", referral).send({ from: account, value: amount * 1000000000000000000 }).then(result => {
 
                             handleCloseDonate();
                             userGiven += amount * 1000000000000000000;
@@ -190,7 +192,7 @@ function Charity2() {
                         //no referral
                     } else {
 
-                        donations.methods.donate("0x165CD37b4C644C2921454429E7F9358d18A45e14").send({ from: account, value: amount * 1000000000000000000 }).then(result => {
+                        donations.methods.donate("0x7cF2eBb5Ca55A8bd671A020F8BDbAF07f60F26C1").send({ from: account, value: amount * 1000000000000000000 }).then(result => {
 
                             handleCloseDonate();
                             userGiven += amount * 1000000000000000000;
@@ -295,9 +297,9 @@ function Charity2() {
 
         givewell.methods.getTokenByUser(account).call().then(result => {
             let userToken = parseInt(result);
-            donations.methods.getGiven("0x165CD37b4C644C2921454429E7F9358d18A45e14", account).call().then(result => {
+            donations.methods.getGiven("0x7cF2eBb5Ca55A8bd671A020F8BDbAF07f60F26C1", account).call().then(result => {
                 let userGiven = parseInt(result);
-                donations.methods.getRaised("0x165CD37b4C644C2921454429E7F9358d18A45e14", account).call().then(result => {
+                donations.methods.getRaised("0x7cF2eBb5Ca55A8bd671A020F8BDbAF07f60F26C1", account).call().then(result => {
                     let userRaised = parseInt(result);
 
                     var userDeserves = 0;
@@ -381,9 +383,9 @@ function Charity2() {
     const handleUpdateMint = async () => {
         givewell.methods.getTokenByUser(account).call().then(result => {
             let userToken = parseInt(result);
-            donations.methods.getGiven("0x165CD37b4C644C2921454429E7F9358d18A45e14", account).call().then(result => {
+            donations.methods.getGiven("0x7cF2eBb5Ca55A8bd671A020F8BDbAF07f60F26C1", account).call().then(result => {
                 let userGiven = parseInt(result);
-                donations.methods.getRaised("0x165CD37b4C644C2921454429E7F9358d18A45e14", account).call().then(result => {
+                donations.methods.getRaised("0x7cF2eBb5Ca55A8bd671A020F8BDbAF07f60F26C1", account).call().then(result => {
                     let userRaised = parseInt(result);
 
                     var userDeserves = 0;
