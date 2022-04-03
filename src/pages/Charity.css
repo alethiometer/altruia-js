@@ -19,6 +19,7 @@
 
 .wallet-connected {
     cursor: default;
+    margin-bottom: 1rem;
 }
 
 .wallet-not-connected {
@@ -182,6 +183,7 @@ h1 {
 
 .leaderboard {
     padding-bottom: 20rem;
+    text-align: center;
 }
 
 .leaderboard-img {
@@ -216,4 +218,24 @@ h1 {
 
 .mint-div-img {
     height: 4rem;
+}
+
+.account-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items: right;
+    text-align: right;
+}
+
+.account-info {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.4rem;
+    padding-right: 1.5rem;
+    padding-bottom: 0rem;
+    background: linear-gradient(90deg, #00F0FF 10%, #5773FF 40%, #FF007A 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text; 
 }
