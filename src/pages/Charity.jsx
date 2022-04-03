@@ -6,6 +6,7 @@ import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import "./Charity.css";
 import leaderboard from './leaderboard.png'
+import mintemoji from './blob.gif'
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -122,7 +123,14 @@ function Charity() {
                     <div className="spacer"> </div>
                     <Button onClick={handleShowRaise} className="raise-button">Raise</Button>
                 </div>
-                <Button onClick={handleShowMint} className="mint-button">Mint</Button>
+                <div className="mint-div">
+                    <div className="mint-div-head">
+                        <img src={mintemoji}/>
+                        <div className="spacer"></div>
+                        <p>Redeem your NFT to represent your contribution!</p>
+                    </div>
+                    <Button onClick={handleShowMint} className="mint-button">Mint</Button>
+                </div>
             </div>
             <div className="leaderboard">
                 <div className="leaderboard-header">
