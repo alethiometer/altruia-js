@@ -243,3 +243,22 @@ h1 {
 .promptUpdate, .promptMint {
     display: none;
 }
+
+.gallery-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.NFT {
+    width: 12vw;
+}
+
+.NFT-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-bottom: 15rem;
+    padding-top: 3rem;
+}
