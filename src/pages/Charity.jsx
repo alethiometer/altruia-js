@@ -64,9 +64,20 @@ function Charity() {
         } else {
             const amount = parseFloat(document.getElementById("inputAmount").value);
 
-            donations.methods.donate("0x165CD37b4C644C2921454429E7F9358d18A45e14").send({ from: account, value: amount * 1000000000000000000 }).then(result => {
-                alert('Donated ' + toString(amount) + ' ETH successfully');
+            donations.methods.donate("0x92644E66DACA94F720875A93a8df011CB17dbFC0").send({ from: account, value: amount * 1000000000000000000 }).then(result => {
                 
+                handleCloseDonate();
+
+                //if hasn't minted, mint
+                
+                if() {
+
+                }
+                handleShowMint();
+
+                //if minted but able to update, update
+
+
             }).catch((error) => {
                 alert(error);
             });
@@ -98,7 +109,7 @@ function Charity() {
     return (
         <div className="container">
             <div className="wallet-connect">
-                {account ? <Button className="wallet-connected">Wallet connected</Button>
+                {account ? <Button className="wallet-connected">Wallet connected </Button>
                     : <Button onClick={connectWalletHandler} className="wallet-not-connected">Connect wallet</Button>}
             </div>
             <div className="header">
