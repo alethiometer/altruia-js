@@ -636,6 +636,15 @@ function Charity2() {
                     </div>
                     <Button onClick={handleShowMint} className="mint-button">Mint</Button>
                 </div>
+                </div>
+                <div className="mint-div promptUpdate" id="promptUpdate">
+                    <div className="mint-div-head">
+                        <img src={mintemoji} className="mint-div-img" />
+                        <div className="spacer"></div>
+                        <p>Update your NFT for your other donations by clicking the update button below!</p>
+                    </div>
+                    <Button onClick={handleShowUpdateMint} className="mint-button">Update</Button>
+                </div>
                 <div className="user-NFT">
                     <div className="userStats">
                         <img src={diamondDiamond} className="userNFT" id="nft25" />
@@ -676,16 +685,6 @@ function Charity2() {
                     <a href="https://testnets.opensea.io/collection/altruia-x-givewell-donation-collection" className="opensea">View the collection on OpenSea!</a>
                     </div>
                 </div>
-                </div>
-                <div className="mint-div promptUpdate" id="promptUpdate">
-                    <div className="mint-div-head">
-                        <img src={mintemoji} className="mint-div-img" />
-                        <div className="spacer"></div>
-                        <p>Update your NFT for your other donations by clicking the update button below!</p>
-                    </div>
-                    <Button onClick={handleShowUpdateMint} className="mint-button">Update</Button>
-                </div>
-
             </div>
 
             <div className="leaderboard">
