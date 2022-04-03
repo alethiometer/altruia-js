@@ -752,7 +752,7 @@ function Charity2() {
                     <p className="modalSubtitle">Invite others to contribute through your referral link.</p>
                     <div className="invite-row">
                         <p className="inviteLink">{`https://altruia.xyz/givewell?ref=${account}`}</p>
-                        <div className="spacer"></div>
+                        <div className="spacer-2"></div>
                         {copied ? <Button variant="primary" className="copy-link-button">Copied</Button> :
                             <Button variant="primary" onClick={() => {
                                 navigator.clipboard.writeText(`https://altruia.xyz/givewell?ref=${account}`);
