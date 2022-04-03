@@ -78,20 +78,107 @@ function Charity2() {
         });
     }
  
-    const checkAccount = async(_account) => {
-        donations.methods.getGiven("0x7cF2eBb5Ca55A8bd671A020F8BDbAF07f60F26C1", _account).call().then(result => {
-            let myTotalGiven = parseInt(result)/(10**18);
-            let givenText = "Donated: "+myTotalGiven.toString()+" ETH";
-            document.getElementById("myUserGiven").innerHTML = givenText;
-        });
-        donations.methods.getRaised("0x7cF2eBb5Ca55A8bd671A020F8BDbAF07f60F26C1", _account).call().then(result2 => {
-            let myTotalRaised = parseInt(result2)/(10**18);
-            let raisedText = "Raised: "+myTotalRaised.toString()+" ETH";
-            document.getElementById("myUserRaised").innerHTML = raisedText;
+    const checkAccount = async (_account) => {
+        givewell.methods.getTokenByUser(_account).call().then(result => {
+            let userToken = parseInt(result);
+
+            document.getElementById("nft0").style.display = "none";
+            document.getElementById("nft" + userToken.toString()).style.display = "block";
+
+            donations.methods.getGiven("0x7cF2eBb5Ca55A8bd671A020F8BDbAF07f60F26C1", _account).call().then(result => {
+                let myTotalGiven = parseInt(result) / (10 ** 18);
+                let givenText = "Donated: " + myTotalGiven.toString() + " ETH";
+                document.getElementById("myUserGiven").innerHTML = givenText;
+
+                donations.methods.getRaised("0x7cF2eBb5Ca55A8bd671A020F8BDbAF07f60F26C1", _account).call().then(result2 => {
+                    let myTotalRaised = parseInt(result2) / (10 ** 18);
+                    let raisedText = "Raised: " + myTotalRaised.toString() + " ETH";
+                    document.getElementById("myUserRaised").innerHTML = raisedText;
+
+                    let userGiven = myTotalGiven * (10 ** 18);
+                    let userRaised = myTotalRaised * (10 ** 18);
+
+                    var userDeserves = 0;
+                    if (userGiven < 10 ** 16) {
+                        if (userRaised < 10 ** 16) {
+                            if (userGiven == 0 && userRaised == 0) {
+                                userDeserves = 0;
+                            } else {
+                                userDeserves = 1;
+                            }
+                        } else if (userRaised < 10 ** 17) {
+                            userDeserves = 2;
+                        } else if (userRaised < 10 ** 18) {
+                            userDeserves = 3;
+                        } else if (userRaised < 10 ** 19) {
+                            userDeserves = 4;
+                        } else if (userRaised < 10 ** 29) {
+                            userDeserves = 5;
+                        }
+                    } else if (userGiven < 10 ** 17) {
+                        if (userRaised < 10 ** 16) {
+                            userDeserves = 6;
+                        } else if (userRaised < 10 ** 17) {
+                            userDeserves = 7;
+                        } else if (userRaised < 10 ** 18) {
+                            userDeserves = 8;
+                        } else if (userRaised < 10 ** 19) {
+                            userDeserves = 9;
+                        } else if (userRaised < 10 ** 29) {
+                            userDeserves = 10;
+                        }
+                    } else if (userGiven < 10 ** 18) {
+                        if (userRaised < 10 ** 16) {
+                            userDeserves = 11;
+                        } else if (userRaised < 10 ** 17) {
+                            userDeserves = 12;
+                        } else if (userRaised < 10 ** 18) {
+                            userDeserves = 13;
+                        } else if (userRaised < 10 ** 19) {
+                            userDeserves = 14;
+                        } else if (userRaised < 10 ** 29) {
+                            userDeserves = 15;
+                        }
+                    } else if (userGiven < 10 ** 19) {
+                        if (userRaised < 10 ** 16) {
+                            userDeserves = 16;
+                        } else if (userRaised < 10 ** 17) {
+                            userDeserves = 17;
+                        } else if (userRaised < 10 ** 18) {
+                            userDeserves = 18;
+                        } else if (userRaised < 10 ** 19) {
+                            userDeserves = 19;
+                        } else if (userRaised < 10 ** 29) {
+                            userDeserves = 20;
+                        }
+                    } else if (userGiven < 10 ** 29) {
+                        if (userRaised < 10 ** 16) {
+                            userDeserves = 21;
+                        } else if (userRaised < 10 ** 17) {
+                            userDeserves = 22;
+                        } else if (userRaised < 10 ** 18) {
+                            userDeserves = 23;
+                        } else if (userRaised < 10 ** 19) {
+                            userDeserves = 24;
+                        } else if (userRaised < 10 ** 29) {
+                            userDeserves = 25;
+                        }
+                    }
+
+
+                    if (userToken == 0 && userDeserves != 0) {
+                        // show mint prompt
+                        document.getElementById("promptMint").style.display = "block";
+                    } else if (userToken != 0 && userToken != userDeserves && userDeserves != 0) {
+                        // show update prompt
+                        document.getElementById("promptUpdate").style.display = "block";
+
+                    }
+
+                });
+            });
         });
     }
-
-    //0x7cF2eBb5Ca55A8bd671A020F8BDbAF07f60F26C1
 
     const connectWalletHandler = async () => {
         const { ethereum } = window;
@@ -495,6 +582,7 @@ function Charity2() {
     } 
 
     useEffect(() => {
+        document.getElementById("nft0").style.display = "block";
         checkWalletIsConnected().then(() => {
             checkTotalRaised();
         });
@@ -542,8 +630,7 @@ function Charity2() {
                     <Button onClick={handleShowRaise} className="raise-button">Raise</Button>
                 </div>
 
-
-                {/* <div className="userStats">
+                <div className="userStats">
                     <img src={diamondDiamond} className="userNFT" id="nft25" />
                     <img src={diamondGold} className="userNFT" id="nft24" />
                     <img src={diamondSilver} className="userNFT" id="nft23" />
@@ -570,33 +657,29 @@ function Charity2() {
                     <img src={woodBronze} className="userNFT" id="nft2" />
                     <img src={woodWood} className="userNFT" id="nft1" />
                     <img src={noNft} className="userNFT" id="nft0" />
-                </div> */}
+                </div>
                 <div>
-                    <a href="https://testnets.opensea.io/collection/altruia-x-givewell-donation-collection">View Colletion on OpenSea</a>
+                    <a href="https://testnets.opensea.io/collection/altruia-x-givewell-donation-collection" target="_blank">View Colletion on OpenSea</a>
                 </div>
 
-                {userTokens == 0 && userDeserves > 0 ? 
-                    <div className="mint-div">
-                        <div className="mint-div-head">
-                            <img src={mintemoji} className="mint-div-img"/>
-                            <div className="spacer"></div>
-                            <p>Redeem your NFT for your first donation by clicking the mint button below!</p>
-                        </div>
-                        <Button onClick={handleShowMint} className="mint-button">Mint</Button>
+                <div className="mint-div promptMint" id="promptMint">
+                    <div className="mint-div-head">
+                        <img src={mintemoji} className="mint-div-img" />
+                        <div className="spacer"></div>
+                        <p>Redeem your NFT for your first donation by clicking the mint button below!</p>
                     </div>
-                : <div></div>
-                }
-                {userTokens != userDeserves && userDeserves != 0 ? 
-                    <div className="mint-div">
-                        <div className="mint-div-head">
-                            <img src={mintemoji} className="mint-div-img"/>
-                            <div className="spacer"></div>
-                            <p>Update your NFT for your other donations by clicking the update button below!</p>
-                        </div>
-                        <Button onClick={handleShowMint} className="mint-button">Update</Button>
+                    <Button onClick={handleShowMint} className="mint-button">Mint</Button>
+                </div>
+
+                <div className="mint-div promptUpdate" id="promptUpdate">
+                    <div className="mint-div-head">
+                        <img src={mintemoji} className="mint-div-img" />
+                        <div className="spacer"></div>
+                        <p>Update your NFT for your other donations by clicking the update button below!</p>
                     </div>
-                : <div></div>
-                }
+                    <Button onClick={handleShowUpdateMint} className="mint-button">Update</Button>
+                </div>
+
             </div>
             <div className="leaderboard">
                 <div className="leaderboard-header">
