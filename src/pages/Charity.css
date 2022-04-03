@@ -17,6 +17,10 @@
     text-align: center;
 }
 
+.wallet-connected {
+    cursor: default;
+}
+
 .wallet-not-connected {
     background-color: transparent;
 }

@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 
-import web3 from "../web3";
+import Web3 from "web3";
 import donations from "../donations";
 
 function Charity() {
@@ -35,6 +35,7 @@ function Charity() {
             setAccount(accounts[0]);
         } catch (err) {
             console.log(err);
+            alert("There was an issue connecting your wallet. Please try again!")
         }
     }
 

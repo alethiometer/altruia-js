@@ -13,10 +13,6 @@ import {
 import Main from "./pages/Main";
 import Charity from "./pages/Charity";
 
-// Web3
-import web3 from './web3';
-import donations from './donations';
-
  
 class App extends Component {
   render() {
