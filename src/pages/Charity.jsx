@@ -374,11 +374,11 @@ function Charity() {
                     <Modal.Title><h5>Raise</h5></Modal.Title>
                     <p className="modalSubtitle">Invite others to contribute through your referral link.</p>
                     <div className="invite-row">
-                        <p className="inviteLink">{`https://altruia.com/ukrainian-crisis?ref=${account}`}</p>
+                        <p className="inviteLink">{`https://altruia.xyz/ukrainian-crisis?ref=${account}`}</p>
                         <div className="spacer"></div>
                         {copied ? <Button variant="primary" className="copy-link-button">Copied</Button> :
                             <Button variant="primary" onClick={() => {
-                                navigator.clipboard.writeText("https://altruia.com/ukrainian-crisis?ref=0x123978561298376128346");
+                                navigator.clipboard.writeText(`https://altruia.xyz/ukrainian-crisis?ref=${account}`);
                                 setCopied(true);
                             }} className="copy-link-button">
                                 Copy
