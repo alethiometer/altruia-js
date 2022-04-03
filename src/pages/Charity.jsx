@@ -153,7 +153,7 @@ function Charity() {
                                 //if hasn't minted, mint
                                 handleShowMint();
                             } else if (userToken != userDeserves && userDeserves != 0) {
-                                alert("Update your NFT");
+                                handleShowUpdateMint();
                             }
                             
 
@@ -242,7 +242,7 @@ function Charity() {
                                 //if hasn't minted, mint
                                 handleShowMint();
                             } else if (userToken != userDeserves && userDeserves != 0) {
-                                alert("Update your NFT");
+                                handleShowUpdateMint();
                             }
                             
 
@@ -261,6 +261,14 @@ function Charity() {
 
         });
 
+
+    }
+
+    const handleMint = async () => {
+
+    }
+
+    const handleUpdateMint = async () => {
 
     }
 
@@ -368,7 +376,7 @@ function Charity() {
                     <Modal.Title><h5>Mint</h5></Modal.Title>
                     <p className="modalSubtitle">As a token of your first donation to the Ukrainian Crisis, mint your NFT!</p>
                     <div className="invite-row">
-                         <Button variant="primary" className="copy-link-button">Mint</Button>
+                         <Button variant="primary" onClick={handleMint} className="copy-link-button">Mint</Button>
                     </div>
                 </Modal.Body>
             </Modal>
@@ -380,7 +388,7 @@ function Charity() {
                     <Modal.Title><h5>Update Mint</h5></Modal.Title>
                     <p className="modalSubtitle">Your additional donation to the Ukrainian Crisis is much appreciated! Update your NFT to reflect the latest contrubutions.</p>
                     <div className="invite-row">
-                        <Button variant="primary" className="copy-link-button">Update mint</Button>
+                        <Button variant="primary" onClick={handleUpdateMint} className="copy-link-button">Update</Button>
                     </div>
                 </Modal.Body>
             </Modal>
