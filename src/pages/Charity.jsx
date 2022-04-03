@@ -629,34 +629,36 @@ function Charity() {
                     <div className="spacer"> </div>
                     <Button onClick={handleShowRaise} className="raise-button">Raise</Button>
                 </div>
-                
-                <div className="userStats">
-                <img src={diamondDiamond} className="userNFT" id="nft25"/>
-                <img src={diamondGold} className="userNFT" id="nft24"/>
-                <img src={diamondSilver} className="userNFT" id="nft23"/>
-                <img src={diamondBronze} className="userNFT" id="nft22"/>
-                <img src={diamondWood} className="userNFT" id="nft21"/>
-                <img src={goldDiamond} className="userNFT" id="nft20"/>
-                <img src={goldGold} className="userNFT" id="nft19"/>
-                <img src={goldSilver} className="userNFT" id="nft18"/>
-                <img src={goldBronze} className="userNFT" id="nft17"/>
-                <img src={goldWood} className="userNFT" id="nft16"/>
-                <img src={silverDiamond} className="userNFT" id="nft15"/>
-                <img src={silverGold} className="userNFT" id="nft14"/>
-                <img src={silverSilver} className="userNFT" id="nft13"/>
-                <img src={silverBronze} className="userNFT" id="nft12"/>
-                <img src={silverWood} className="userNFT" id="nft11"/>
-                <img src={bronzeDiamond} className="userNFT" id="nft10"/>
-                <img src={bronzeGold} className="userNFT" id="nft9"/>
-                <img src={bronzeSilver} className="userNFT" id="nft8"/>
-                <img src={bronzeBronze} className="userNFT" id="nft7"/>
-                <img src={bronzeWood} className="userNFT" id="nft6"/>
-                <img src={woodDiamond} className="userNFT" id="nft5"/>
-                <img src={woodGold} className="userNFT" id="nft4"/>
-                <img src={woodSilver} className="userNFT" id="nft3"/>
-                <img src={woodBronze} className="userNFT" id="nft2"/>
-                <img src={woodWood} className="userNFT" id="nft1"/>
-                <img src={noNft} className="userNFT" id="nft0"/>
+                <div className="user-NFT">
+                    <div className="userStats">
+                    <img src={diamondDiamond} className="userNFT" id="nft25"/>
+                    <img src={diamondGold} className="userNFT" id="nft24"/>
+                    <img src={diamondSilver} className="userNFT" id="nft23"/>
+                    <img src={diamondBronze} className="userNFT" id="nft22"/>
+                    <img src={diamondWood} className="userNFT" id="nft21"/>
+                    <img src={goldDiamond} className="userNFT" id="nft20"/>
+                    <img src={goldGold} className="userNFT" id="nft19"/>
+                    <img src={goldSilver} className="userNFT" id="nft18"/>
+                    <img src={goldBronze} className="userNFT" id="nft17"/>
+                    <img src={goldWood} className="userNFT" id="nft16"/>
+                    <img src={silverDiamond} className="userNFT" id="nft15"/>
+                    <img src={silverGold} className="userNFT" id="nft14"/>
+                    <img src={silverSilver} className="userNFT" id="nft13"/>
+                    <img src={silverBronze} className="userNFT" id="nft12"/>
+                    <img src={silverWood} className="userNFT" id="nft11"/>
+                    <img src={bronzeDiamond} className="userNFT" id="nft10"/>
+                    <img src={bronzeGold} className="userNFT" id="nft9"/>
+                    <img src={bronzeSilver} className="userNFT" id="nft8"/>
+                    <img src={bronzeBronze} className="userNFT" id="nft7"/>
+                    <img src={bronzeWood} className="userNFT" id="nft6"/>
+                    <img src={woodDiamond} className="userNFT" id="nft5"/>
+                    <img src={woodGold} className="userNFT" id="nft4"/>
+                    <img src={woodSilver} className="userNFT" id="nft3"/>
+                    <img src={woodBronze} className="userNFT" id="nft2"/>
+                    <img src={woodWood} className="userNFT" id="nft1"/>
+                    <img src={noNft} className="userNFT" id="nft0"/>
+                    </div>
+                    <div></div>
                 </div>
 
                 <div className="mint-div promptMint" id="promptMint">
