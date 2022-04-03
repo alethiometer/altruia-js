@@ -16,6 +16,7 @@ import ukraine from "../ukraine";
 function Charity() {
     const [account, setAccount] = useState(null);
     const [copied, setCopied] = useState(false);
+    const [updateMint, setUpdateMint] = useState(false);
 
     const checkWalletIsConnected = async () => {
         const { ethereum } = window;
@@ -89,6 +90,11 @@ function Charity() {
     const handleCloseRaise = () => { setShowRaise(false); setCopied(false); }
     const handleShowRaise = () => setShowRaise(true);
 
+    // Mint modal
+    const [showMint, setShowMint] = useState(false);
+    const handleCloseMint = () => setShowMint(false);
+    const handleShowMint = () => setShowMint(true);
+
     return (
         <div className="container">
             <div className="wallet-connect">
@@ -104,6 +110,7 @@ function Charity() {
                     <div className="spacer"> </div>
                     <Button onClick={handleShowRaise} className="raise-button">Raise</Button>
                 </div>
+                <Button onClick={handleShowMint} className="mint-button">Mint</Button>
             </div>
             <div className="leaderboard">
                 <div className="leaderboard-header">
@@ -167,6 +174,20 @@ function Charity() {
                             }} className="copy-link-button">
                                 Copy
                             </Button>
+                        }
+                    </div>
+                </Modal.Body>
+            </Modal>
+
+            <Modal show={showMint} onHide={handleCloseMint} className="raiseModal" size="lg">
+                <Modal.Header closeButton className="modalHeader btn-close-white">
+                </Modal.Header>
+                <Modal.Body className="justify-content-center modalBody">
+                    <Modal.Title><h5>Mint</h5></Modal.Title>
+                    <p className="modalSubtitle">If this is your first donation to the Ukrainian Crisis, mint your NFT! Otherwise, update your NFT here to reflect any new contributions.</p>
+                    <div className="invite-row">
+                        {copied ? <Button variant="primary" className="copy-link-button">Update mint</Button> :
+                            <Button variant="primary" className="copy-link-button">Mint</Button>
                         }
                     </div>
                 </Modal.Body>
