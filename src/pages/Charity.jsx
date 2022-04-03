@@ -17,152 +17,12 @@ import donations from "../donations";
 import ukraine from "../ukraine";
 
 
-// function getTokenByAmounts(userGiven, userRaised) {
-//     var userDeserves = 0;
-//     if (userGiven < 10 ** 16) {
-//         if (userRaised < 10 ** 16) {
-//             if (userGiven == 0 && userRaised == 0) {
-//                 userDeserves = 0;
-//             } else {
-//                 userDeserves = 1;
-//             }
-//         } else if (userRaised < 10 ** 17) {
-//             userDeserves = 2;
-//         } else if (userRaised < 10 ** 18) {
-//             userDeserves = 3;
-//         } else if (userRaised < 10 ** 19) {
-//             userDeserves = 4;
-//         } else if (userRaised < 10 ** 29) {
-//             userDeserves = 5;
-//         }
-//     } else if (userGiven < 10 ** 17) {
-//         if (userRaised < 10 ** 16) {
-//             userDeserves = 6;
-//         } else if (userRaised < 10 ** 17) {
-//             userDeserves = 7;
-//         } else if (userRaised < 10 ** 18) {
-//             userDeserves = 8;
-//         } else if (userRaised < 10 ** 19) {
-//             userDeserves = 9;
-//         } else if (userRaised < 10 ** 29) {
-//             userDeserves = 10;
-//         }
-//     } else if (userGiven < 10 ** 18) {
-//         if (userRaised < 10 ** 16) {
-//             userDeserves = 11;
-//         } else if (userRaised < 10 ** 17) {
-//             userDeserves = 12;
-//         } else if (userRaised < 10 ** 18) {
-//             userDeserves = 13;
-//         } else if (userRaised < 10 ** 19) {
-//             userDeserves = 14;
-//         } else if (userRaised < 10 ** 29) {
-//             userDeserves = 15;
-//         }
-//     } else if (userGiven < 10 ** 19) {
-//         if (userRaised < 10 ** 16) {
-//             userDeserves = 16;
-//         } else if (userRaised < 10 ** 17) {
-//             userDeserves = 17;
-//         } else if (userRaised < 10 ** 18) {
-//             userDeserves = 18;
-//         } else if (userRaised < 10 ** 19) {
-//             userDeserves = 19;
-//         } else if (userRaised < 10 ** 29) {
-//             userDeserves = 20;
-//         }
-//     } else if (userGiven < 10 ** 29) {
-//         if (userRaised < 10 ** 16) {
-//             userDeserves = 21;
-//         } else if (userRaised < 10 ** 17) {
-//             userDeserves = 22;
-//         } else if (userRaised < 10 ** 18) {
-//             userDeserves = 23;
-//         } else if (userRaised < 10 ** 19) {
-//             userDeserves = 24;
-//         } else if (userRaised < 10 ** 29) {
-//             userDeserves = 25;
-//         }
-//     }
-//     return userDeserves;
-// }
-
-
 function Charity() {
     const [account, setAccount] = useState(null);
     const [copied, setCopied] = useState(false);
     const [updateMint, setUpdateMint] = useState(false);
     const [referrer, setReferrer] = useState(null);
 
-    const getTokenByAmounts = (userGiven, userRaised) => {
-        var userDeserves = 0;
-        if (userGiven < 10 ** 16) {
-            if (userRaised < 10 ** 16) {
-                if (userGiven == 0 && userRaised == 0) {
-                    userDeserves = 0;
-                } else {
-                    userDeserves = 1;
-                }
-            } else if (userRaised < 10 ** 17) {
-                userDeserves = 2;
-            } else if (userRaised < 10 ** 18) {
-                userDeserves = 3;
-            } else if (userRaised < 10 ** 19) {
-                userDeserves = 4;
-            } else if (userRaised < 10 ** 29) {
-                userDeserves = 5;
-            }
-        } else if (userGiven < 10 ** 17) {
-            if (userRaised < 10 ** 16) {
-                userDeserves = 6;
-            } else if (userRaised < 10 ** 17) {
-                userDeserves = 7;
-            } else if (userRaised < 10 ** 18) {
-                userDeserves = 8;
-            } else if (userRaised < 10 ** 19) {
-                userDeserves = 9;
-            } else if (userRaised < 10 ** 29) {
-                userDeserves = 10;
-            }
-        } else if (userGiven < 10 ** 18) {
-            if (userRaised < 10 ** 16) {
-                userDeserves = 11;
-            } else if (userRaised < 10 ** 17) {
-                userDeserves = 12;
-            } else if (userRaised < 10 ** 18) {
-                userDeserves = 13;
-            } else if (userRaised < 10 ** 19) {
-                userDeserves = 14;
-            } else if (userRaised < 10 ** 29) {
-                userDeserves = 15;
-            }
-        } else if (userGiven < 10 ** 19) {
-            if (userRaised < 10 ** 16) {
-                userDeserves = 16;
-            } else if (userRaised < 10 ** 17) {
-                userDeserves = 17;
-            } else if (userRaised < 10 ** 18) {
-                userDeserves = 18;
-            } else if (userRaised < 10 ** 19) {
-                userDeserves = 19;
-            } else if (userRaised < 10 ** 29) {
-                userDeserves = 20;
-            }
-        } else if (userGiven < 10 ** 29) {
-            if (userRaised < 10 ** 16) {
-                userDeserves = 21;
-            } else if (userRaised < 10 ** 17) {
-                userDeserves = 22;
-            } else if (userRaised < 10 ** 18) {
-                userDeserves = 23;
-            } else if (userRaised < 10 ** 19) {
-                userDeserves = 24;
-            } else if (userRaised < 10 ** 29) {
-                userDeserves = 25;
-            }
-        }
-        return userDeserves;
-    }
 
     const checkWalletIsConnected = async () => {
         const { ethereum } = window;
@@ -211,13 +71,100 @@ function Charity() {
                 let userGiven = parseInt(result);
                 donations.methods.getRaised("0x92644E66DACA94F720875A93a8df011CB17dbFC0", account).call().then(result => {
                     let userRaised = parseInt(result);
+                    const amount = parseFloat(document.getElementById("inputAmount").value);
 
+                    //referral
                     if (urlParams.has('ref')) {
-                        const referral = urlParams.get("ref");
-                        //referral exists
-                        //...
+                        let referral = urlParams.get("ref");
+                        
+                        donations.methods.donate("0x92644E66DACA94F720875A93a8df011CB17dbFC0").send({ from: account, value: amount * 1000000000000000000 }).then(result => {
+
+                            handleCloseDonate();
+                            userGiven += amount * 1000000000000000000;
+
+                            var userDeserves = 0;
+                            if (userGiven < 10 ** 16) {
+                                if (userRaised < 10 ** 16) {
+                                    if (userGiven == 0 && userRaised == 0) {
+                                        userDeserves = 0;
+                                    } else {
+                                        userDeserves = 1;
+                                    }
+                                } else if (userRaised < 10 ** 17) {
+                                    userDeserves = 2;
+                                } else if (userRaised < 10 ** 18) {
+                                    userDeserves = 3;
+                                } else if (userRaised < 10 ** 19) {
+                                    userDeserves = 4;
+                                } else if (userRaised < 10 ** 29) {
+                                    userDeserves = 5;
+                                }
+                            } else if (userGiven < 10 ** 17) {
+                                if (userRaised < 10 ** 16) {
+                                    userDeserves = 6;
+                                } else if (userRaised < 10 ** 17) {
+                                    userDeserves = 7;
+                                } else if (userRaised < 10 ** 18) {
+                                    userDeserves = 8;
+                                } else if (userRaised < 10 ** 19) {
+                                    userDeserves = 9;
+                                } else if (userRaised < 10 ** 29) {
+                                    userDeserves = 10;
+                                }
+                            } else if (userGiven < 10 ** 18) {
+                                if (userRaised < 10 ** 16) {
+                                    userDeserves = 11;
+                                } else if (userRaised < 10 ** 17) {
+                                    userDeserves = 12;
+                                } else if (userRaised < 10 ** 18) {
+                                    userDeserves = 13;
+                                } else if (userRaised < 10 ** 19) {
+                                    userDeserves = 14;
+                                } else if (userRaised < 10 ** 29) {
+                                    userDeserves = 15;
+                                }
+                            } else if (userGiven < 10 ** 19) {
+                                if (userRaised < 10 ** 16) {
+                                    userDeserves = 16;
+                                } else if (userRaised < 10 ** 17) {
+                                    userDeserves = 17;
+                                } else if (userRaised < 10 ** 18) {
+                                    userDeserves = 18;
+                                } else if (userRaised < 10 ** 19) {
+                                    userDeserves = 19;
+                                } else if (userRaised < 10 ** 29) {
+                                    userDeserves = 20;
+                                }
+                            } else if (userGiven < 10 ** 29) {
+                                if (userRaised < 10 ** 16) {
+                                    userDeserves = 21;
+                                } else if (userRaised < 10 ** 17) {
+                                    userDeserves = 22;
+                                } else if (userRaised < 10 ** 18) {
+                                    userDeserves = 23;
+                                } else if (userRaised < 10 ** 19) {
+                                    userDeserves = 24;
+                                } else if (userRaised < 10 ** 29) {
+                                    userDeserves = 25;
+                                }
+                            }
+
+                            if (userToken == 0) {
+                                //if hasn't minted, mint
+                                handleShowMint();
+                            } else if (userToken != userDeserves && userDeserves != 0) {
+                                alert("Update your NFT");
+                            }
+                            
+
+                            //if minted but able to update, update
+
+
+                        });
+
+
+                    //no referral
                     } else {
-                        const amount = parseFloat(document.getElementById("inputAmount").value);
 
                         donations.methods.donate("0x92644E66DACA94F720875A93a8df011CB17dbFC0").send({ from: account, value: amount * 1000000000000000000 }).then(result => {
 
