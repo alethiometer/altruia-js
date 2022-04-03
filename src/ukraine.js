@@ -2,7 +2,7 @@ import Web3 from "web3";
 
 const web3 = new Web3(Web3.givenProvider || 'http://localhost:3000');
 
-const address = '0x0dF7C73692f825AD5Fdd8A942d7901ae71ad8E21';
+const address = '0x2914ef6c9364A17b4F9DA49ed6C4c51fBcB10f8e';
 
 const abi = [
 	{
@@ -364,22 +364,22 @@ const abi = [
 		"outputs": [
 			{
 				"internalType": "uint256",
-				"name": "minDonated",
+				"name": "minGiven",
 				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",
-				"name": "maxDonated",
+				"name": "maxGiven",
 				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",
-				"name": "minReferred",
+				"name": "minRaised",
 				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",
-				"name": "maxReferred",
+				"name": "maxRaised",
 				"type": "uint256"
 			},
 			{
