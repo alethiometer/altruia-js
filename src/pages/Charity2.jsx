@@ -14,10 +14,10 @@ import FormControl from 'react-bootstrap/FormControl';
 
 import Web3 from "web3";
 import donations from "../donations";
-import ukraine from "../ukraine";
+import givewell from "../givewell";
 
 
-function Charity() {
+function Charity2() {
     const [account, setAccount] = useState(null);
     const [copied, setCopied] = useState(false);
     const [userDeserves, setUserDeserves] = useState(0);
@@ -87,7 +87,7 @@ function Charity() {
 
 
         //getters
-        ukraine.methods.getTokenByUser(account).call().then(result => {
+        givewell.methods.getTokenByUser(account).call().then(result => {
             let userToken = parseInt(result);
             donations.methods.getGiven("0x165CD37b4C644C2921454429E7F9358d18A45e14", account).call().then(result => {
                 let userGiven = parseInt(result);
@@ -293,7 +293,7 @@ function Charity() {
     const handleMint = async () => {
 
 
-        ukraine.methods.getTokenByUser(account).call().then(result => {
+        givewell.methods.getTokenByUser(account).call().then(result => {
             let userToken = parseInt(result);
             donations.methods.getGiven("0x165CD37b4C644C2921454429E7F9358d18A45e14", account).call().then(result => {
                 let userGiven = parseInt(result);
@@ -367,7 +367,7 @@ function Charity() {
                         }
                     }
 
-                    ukraine.methods.mint(userDeserves).send({ from: account }).then(result => {
+                    givewell.methods.mint(userDeserves).send({ from: account }).then(result => {
                         alert("Minted NFT successfully");
                         handleCloseMint();
                     });
@@ -379,7 +379,7 @@ function Charity() {
     }
 
     const handleUpdateMint = async () => {
-        ukraine.methods.getTokenByUser(account).call().then(result => {
+        givewell.methods.getTokenByUser(account).call().then(result => {
             let userToken = parseInt(result);
             donations.methods.getGiven("0x165CD37b4C644C2921454429E7F9358d18A45e14", account).call().then(result => {
                 let userGiven = parseInt(result);
@@ -454,7 +454,7 @@ function Charity() {
                     }
 
                     if (userToken != 0 && userToken != userDeserves) {
-                        ukraine.methods.update(userDeserves).send({ from: account }).then(result => {
+                        givewell.methods.update(userDeserves).send({ from: account }).then(result => {
                             alert("Updated NFT successfully");
                             handleCloseUpdateMint();
                         });
@@ -506,8 +506,8 @@ function Charity() {
             </div>
             <div className="header">
                 <h2 id="totalRaisedLabel">0.00 Total ETH raised</h2>
-                <h1>Ukrainian Crisis</h1>
-                <p>Stand with the people of Ukraine.</p>
+                <h1>GiveWell</h1>
+                <p>Researching and shortlisting the global charities that save the most lives per dollar.</p>
                 <div className="buttons">
                     <Button onClick={handleShowDonate} className="donate-button">Donate</Button>
                     <div className="spacer"> </div>
@@ -539,7 +539,7 @@ function Charity() {
             <div className="leaderboard">
                 <div className="leaderboard-header">
                     <h3>Leaderboard</h3>
-                    <p>Top donors to the Ukrainian Crisis</p>
+                    <p>Top donors to GiveWell</p>
                 </div>
                 <img src={leaderboard} className="leaderboard-img" />
             </div>
@@ -571,11 +571,11 @@ function Charity() {
                     <Modal.Title><h5>Raise</h5></Modal.Title>
                     <p className="modalSubtitle">Invite others to contribute through your referral link.</p>
                     <div className="invite-row">
-                        <p className="inviteLink">{`https://altruia.xyz/ukrainian-crisis?ref=${account}`}</p>
+                        <p className="inviteLink">{`https://altruia.xyz/givewell?ref=${account}`}</p>
                         <div className="spacer"></div>
                         {copied ? <Button variant="primary" className="copy-link-button">Copied</Button> :
                             <Button variant="primary" onClick={() => {
-                                navigator.clipboard.writeText(`https://altruia.xyz/ukrainian-crisis?ref=${account}`);
+                                navigator.clipboard.writeText(`https://altruia.xyz/givewell?ref=${account}`);
                                 setCopied(true);
                             }} className="copy-link-button">
                                 Copy
@@ -590,7 +590,7 @@ function Charity() {
                 </Modal.Header>
                 <Modal.Body className="justify-content-center modalBody">
                     <Modal.Title><h5>Mint</h5></Modal.Title>
-                    <p className="modalSubtitle">As a token of your first donation to the Ukrainian Crisis, mint your NFT!</p>
+                    <p className="modalSubtitle">As a token of your first donation to GiveWell, mint your NFT!</p>
                     <div className="invite-row">
                         <Button variant="primary" onClick={handleMint} className="copy-link-button">Mint</Button>
                     </div>
@@ -602,7 +602,7 @@ function Charity() {
                 </Modal.Header>
                 <Modal.Body className="justify-content-center modalBody">
                     <Modal.Title><h5>Update Mint</h5></Modal.Title>
-                    <p className="modalSubtitle">Update your NFT to reflect the latest contrubution to the Ukrainian Crisis.</p>
+                    <p className="modalSubtitle">Update your NFT to reflect the latest contrubution to Givewell.</p>
                     <div className="invite-row">
                         <Button variant="primary" onClick={handleUpdateMint} className="copy-link-button">Update</Button>
                     </div>
@@ -612,4 +612,4 @@ function Charity() {
     );
 };
 
-export default Charity;
+export default Charity2;
