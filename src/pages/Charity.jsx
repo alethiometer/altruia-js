@@ -36,6 +36,7 @@ import diamondDiamond from './diamond-diamond.png';
 import diamondGold from './diamond-gold.png';
 import diamondSilver from './diamond-silver.png';
 import diamondWood from './diamond-wood.png';
+import noNft from './noNft.png';
 
 import Web3 from "web3";
 import donations from "../donations";
@@ -80,6 +81,10 @@ function Charity() {
     const checkAccount = async (_account) => {
         ukraine.methods.getTokenByUser(_account).call().then(result => {
             let userToken = parseInt(result);
+
+            document.getElementById("nft0").style.display = "none";
+            document.getElementById("nft"+userToken.toString()).style.display = "block";
+
             donations.methods.getGiven("0x165CD37b4C644C2921454429E7F9358d18A45e14", _account).call().then(result => {
                 let myTotalGiven = parseInt(result) / (10 ** 18);
                 let givenText = "Donated: " + myTotalGiven.toString() + " ETH";
@@ -577,6 +582,7 @@ function Charity() {
     }
 
     useEffect(() => {
+        document.getElementById("nft0").style.display = "block";
         checkWalletIsConnected().then(() => {
             checkTotalRaised();
         });
@@ -607,8 +613,8 @@ function Charity() {
             <div className="wallet-connect">
                 {account ? <div className="account-container">
                     <Button className="wallet-connected">Wallet connected </Button>
-                    <p id="myUserGiven" className="account-info">Total given: </p>
-                    <p id="myUserRaised" className="account-info">Total raised:</p>
+                    <p id="myUserGiven" className="account-info"></p>
+                    <p id="myUserRaised" className="account-info"></p>
                 </div>
                     : <div>
                         <Button onClick={connectWalletHandler} className="wallet-not-connected">Connect wallet</Button>
@@ -622,6 +628,35 @@ function Charity() {
                     <Button onClick={handleShowDonate} className="donate-button">Donate</Button>
                     <div className="spacer"> </div>
                     <Button onClick={handleShowRaise} className="raise-button">Raise</Button>
+                </div>
+
+                <div className="userStats">
+                <img src={diamondDiamond} className="userNFT" id="nft25"/>
+                <img src={diamondGold} className="userNFT" id="nft24"/>
+                <img src={diamondSilver} className="userNFT" id="nft23"/>
+                <img src={diamondBronze} className="userNFT" id="nft22"/>
+                <img src={diamondWood} className="userNFT" id="nft21"/>
+                <img src={goldDiamond} className="userNFT" id="nft20"/>
+                <img src={goldGold} className="userNFT" id="nft19"/>
+                <img src={goldSilver} className="userNFT" id="nft18"/>
+                <img src={goldBronze} className="userNFT" id="nft17"/>
+                <img src={goldWood} className="userNFT" id="nft16"/>
+                <img src={silverDiamond} className="userNFT" id="nft15"/>
+                <img src={silverGold} className="userNFT" id="nft14"/>
+                <img src={silverSilver} className="userNFT" id="nft13"/>
+                <img src={silverBronze} className="userNFT" id="nft12"/>
+                <img src={silverWood} className="userNFT" id="nft11"/>
+                <img src={bronzeDiamond} className="userNFT" id="nft10"/>
+                <img src={bronzeGold} className="userNFT" id="nft9"/>
+                <img src={bronzeSilver} className="userNFT" id="nft8"/>
+                <img src={bronzeBronze} className="userNFT" id="nft7"/>
+                <img src={bronzeWood} className="userNFT" id="nft6"/>
+                <img src={woodDiamond} className="userNFT" id="nft5"/>
+                <img src={woodGold} className="userNFT" id="nft4"/>
+                <img src={woodSilver} className="userNFT" id="nft3"/>
+                <img src={woodBronze} className="userNFT" id="nft2"/>
+                <img src={woodWood} className="userNFT" id="nft1"/>
+                <img src={noNft} className="userNFT" id="nft0"/>
                 </div>
 
                 <div className="mint-div promptMint" id="promptMint">
