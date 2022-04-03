@@ -44,6 +44,11 @@ function Charity() {
             console.log("No authorized account yet.")
         }
     }
+
+    const checkTotalRaised = async() => {
+        
+    }
+
     const connectWalletHandler = async () => {
         const { ethereum } = window;
 
@@ -447,6 +452,7 @@ function Charity() {
 
     useEffect(() => {
         checkWalletIsConnected();
+        checkTotalRaised();
     }, [])
 
     // Donate modal
