@@ -23,6 +23,7 @@ function Charity() {
     const [updateMint, setUpdateMint] = useState(false);
     const [referrer, setReferrer] = useState(null);
     const [userDeserves, setUserDeserves] = useState(0);
+    const [userTokens, setUserTokens] = useState(0);
 
     const checkWalletIsConnected = async () => {
         const { ethereum } = window;
@@ -148,6 +149,8 @@ function Charity() {
                                     userDeserves = 25;
                                 }
                             }
+                            setUserDeserves(userDeserves);
+                            setUserTokens(userToken);
 
                             if (userToken == 0) {
                                 //if hasn't minted, mint
@@ -237,6 +240,8 @@ function Charity() {
                                     userDeserves = 25;
                                 }
                             }
+                            setUserDeserves(userDeserves);
+                            setUserTokens(userToken);
 
                             if (userToken == 0) {
                                 //if hasn't minted, mint
@@ -479,14 +484,28 @@ function Charity() {
                     <div className="spacer"> </div>
                     <Button onClick={handleShowRaise} className="raise-button">Raise</Button>
                 </div>
-                <div className="mint-div">
-                    <div className="mint-div-head">
-                        <img src={mintemoji} className="mint-div-img" />
-                        <div className="spacer"></div>
-                        <p>Redeem your NFT for your first donation by clicking the mint button below!</p>
+                {userTokens == 0 && userDeserves > 0 ? 
+                    <div className="mint-div">
+                        <div className="mint-div-head">
+                            <img src={mintemoji} className="mint-div-img"/>
+                            <div className="spacer"></div>
+                            <p>Redeem your NFT for your first donation by clicking the mint button below!</p>
+                        </div>
+                        <Button onClick={handleShowMint} className="mint-button">Mint</Button>
                     </div>
-                    <Button onClick={handleShowMint} className="mint-button">Mint</Button>
-                </div>
+                : <div></div>
+                }
+                {userTokens != userDeserves && userDeserves != 0 ? 
+                    <div className="mint-div">
+                        <div className="mint-div-head">
+                            <img src={mintemoji} className="mint-div-img"/>
+                            <div className="spacer"></div>
+                            <p>Update your NFT for your other donations by clicking the update button below!</p>
+                        </div>
+                        <Button onClick={handleShowMint} className="mint-button">Update</Button>
+                    </div>
+                : <div></div>
+                }
             </div>
             <div className="leaderboard">
                 <div className="leaderboard-header">
@@ -523,11 +542,11 @@ function Charity() {
                     <Modal.Title><h5>Raise</h5></Modal.Title>
                     <p className="modalSubtitle">Invite others to contribute through your referral link.</p>
                     <div className="invite-row">
-                        <p className="inviteLink">{`https://altruia.com/ukrainian-crisis?ref=${account}`}</p>
+                        <p className="inviteLink">{`https://altruia.xyz/ukrainian-crisis?ref=${account}`}</p>
                         <div className="spacer"></div>
                         {copied ? <Button variant="primary" className="copy-link-button">Copied</Button> :
                             <Button variant="primary" onClick={() => {
-                                navigator.clipboard.writeText("https://altruia.com/ukrainian-crisis?ref=0x123978561298376128346");
+                                navigator.clipboard.writeText(`https://altruia.xyz/ukrainian-crisis?ref=${account}`);
                                 setCopied(true);
                             }} className="copy-link-button">
                                 Copy
