@@ -239,3 +239,7 @@ h1 {
     -webkit-text-fill-color: transparent;
     background-clip: text; 
 }
+
+.promptUpdate, .promptMint {
+    display: none;
+}
