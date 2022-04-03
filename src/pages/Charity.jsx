@@ -145,7 +145,7 @@ function Charity() {
                 </Form>
             </Modal>
 
-            <Modal show={showRaise} onHide={handleCloseRaise} className="raiseModal">
+            <Modal show={showRaise} onHide={handleCloseRaise} className="raiseModal" size="lg">
                 <Modal.Header closeButton className="modalHeader btn-close-white">
                 </Modal.Header>
                 <Modal.Body className="justify-content-center modalBody">
