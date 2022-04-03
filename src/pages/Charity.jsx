@@ -355,7 +355,7 @@ function Charity() {
                     <div className="mint-div-head">
                         <img src={mintemoji} className="mint-div-img"/>
                         <div className="spacer"></div>
-                        <p>Redeem your NFT for your first donation!!</p>
+                        <p>Redeem your NFT for your first donation by clicking the mint button below!</p>
                     </div>
                     <Button onClick={handleShowMint} className="mint-button">Mint</Button>
                 </div>
