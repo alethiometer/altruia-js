@@ -76,8 +76,8 @@ function Charity() {
                     //referral
                     if (urlParams.has('ref')) {
                         let referral = urlParams.get("ref");
-                        
-                        donations.methods.donateWithRefferral("0x92644E66DACA94F720875A93a8df011CB17dbFC0",referral).send({ from: account, value: amount * 1000000000000000000 }).then(result => {
+
+                        donations.methods.donateWithRefferral("0x92644E66DACA94F720875A93a8df011CB17dbFC0", referral).send({ from: account, value: amount * 1000000000000000000 }).then(result => {
 
                             handleCloseDonate();
                             userGiven += amount * 1000000000000000000;
@@ -155,7 +155,7 @@ function Charity() {
                             } else if (userToken != userDeserves && userDeserves != 0) {
                                 handleShowUpdateMint();
                             }
-                            
+
 
                             //if minted but able to update, update
 
@@ -163,7 +163,7 @@ function Charity() {
                         });
 
 
-                    //no referral
+                        //no referral
                     } else {
 
                         donations.methods.donate("0x92644E66DACA94F720875A93a8df011CB17dbFC0").send({ from: account, value: amount * 1000000000000000000 }).then(result => {
@@ -244,7 +244,7 @@ function Charity() {
                             } else if (userToken != userDeserves && userDeserves != 0) {
                                 handleShowUpdateMint();
                             }
-                            
+
 
                             //if minted but able to update, update
 
@@ -266,10 +266,178 @@ function Charity() {
 
     const handleMint = async () => {
 
+
+        ukraine.methods.getTokenByUser(account).call().then(result => {
+            let userToken = parseInt(result);
+            donations.methods.getGiven("0x92644E66DACA94F720875A93a8df011CB17dbFC0", account).call().then(result => {
+                let userGiven = parseInt(result);
+                donations.methods.getRaised("0x92644E66DACA94F720875A93a8df011CB17dbFC0", account).call().then(result => {
+                    let userRaised = parseInt(result);
+
+                    var userDeserves = 0;
+                    if (userGiven < 10 ** 16) {
+                        if (userRaised < 10 ** 16) {
+                            if (userGiven == 0 && userRaised == 0) {
+                                userDeserves = 0;
+                            } else {
+                                userDeserves = 1;
+                            }
+                        } else if (userRaised < 10 ** 17) {
+                            userDeserves = 2;
+                        } else if (userRaised < 10 ** 18) {
+                            userDeserves = 3;
+                        } else if (userRaised < 10 ** 19) {
+                            userDeserves = 4;
+                        } else if (userRaised < 10 ** 29) {
+                            userDeserves = 5;
+                        }
+                    } else if (userGiven < 10 ** 17) {
+                        if (userRaised < 10 ** 16) {
+                            userDeserves = 6;
+                        } else if (userRaised < 10 ** 17) {
+                            userDeserves = 7;
+                        } else if (userRaised < 10 ** 18) {
+                            userDeserves = 8;
+                        } else if (userRaised < 10 ** 19) {
+                            userDeserves = 9;
+                        } else if (userRaised < 10 ** 29) {
+                            userDeserves = 10;
+                        }
+                    } else if (userGiven < 10 ** 18) {
+                        if (userRaised < 10 ** 16) {
+                            userDeserves = 11;
+                        } else if (userRaised < 10 ** 17) {
+                            userDeserves = 12;
+                        } else if (userRaised < 10 ** 18) {
+                            userDeserves = 13;
+                        } else if (userRaised < 10 ** 19) {
+                            userDeserves = 14;
+                        } else if (userRaised < 10 ** 29) {
+                            userDeserves = 15;
+                        }
+                    } else if (userGiven < 10 ** 19) {
+                        if (userRaised < 10 ** 16) {
+                            userDeserves = 16;
+                        } else if (userRaised < 10 ** 17) {
+                            userDeserves = 17;
+                        } else if (userRaised < 10 ** 18) {
+                            userDeserves = 18;
+                        } else if (userRaised < 10 ** 19) {
+                            userDeserves = 19;
+                        } else if (userRaised < 10 ** 29) {
+                            userDeserves = 20;
+                        }
+                    } else if (userGiven < 10 ** 29) {
+                        if (userRaised < 10 ** 16) {
+                            userDeserves = 21;
+                        } else if (userRaised < 10 ** 17) {
+                            userDeserves = 22;
+                        } else if (userRaised < 10 ** 18) {
+                            userDeserves = 23;
+                        } else if (userRaised < 10 ** 19) {
+                            userDeserves = 24;
+                        } else if (userRaised < 10 ** 29) {
+                            userDeserves = 25;
+                        }
+                    }
+
+                    ukraine.methods.mint(userDeserves).send({ from: account }).then(result => {
+                        alert("Minted NFT successfully");
+                        handleCloseMint();
+                    });
+                });
+
+            });
+
+        });
     }
 
     const handleUpdateMint = async () => {
+        ukraine.methods.getTokenByUser(account).call().then(result => {
+            let userToken = parseInt(result);
+            donations.methods.getGiven("0x92644E66DACA94F720875A93a8df011CB17dbFC0", account).call().then(result => {
+                let userGiven = parseInt(result);
+                donations.methods.getRaised("0x92644E66DACA94F720875A93a8df011CB17dbFC0", account).call().then(result => {
+                    let userRaised = parseInt(result);
 
+                    var userDeserves = 0;
+                    if (userGiven < 10 ** 16) {
+                        if (userRaised < 10 ** 16) {
+                            if (userGiven == 0 && userRaised == 0) {
+                                userDeserves = 0;
+                            } else {
+                                userDeserves = 1;
+                            }
+                        } else if (userRaised < 10 ** 17) {
+                            userDeserves = 2;
+                        } else if (userRaised < 10 ** 18) {
+                            userDeserves = 3;
+                        } else if (userRaised < 10 ** 19) {
+                            userDeserves = 4;
+                        } else if (userRaised < 10 ** 29) {
+                            userDeserves = 5;
+                        }
+                    } else if (userGiven < 10 ** 17) {
+                        if (userRaised < 10 ** 16) {
+                            userDeserves = 6;
+                        } else if (userRaised < 10 ** 17) {
+                            userDeserves = 7;
+                        } else if (userRaised < 10 ** 18) {
+                            userDeserves = 8;
+                        } else if (userRaised < 10 ** 19) {
+                            userDeserves = 9;
+                        } else if (userRaised < 10 ** 29) {
+                            userDeserves = 10;
+                        }
+                    } else if (userGiven < 10 ** 18) {
+                        if (userRaised < 10 ** 16) {
+                            userDeserves = 11;
+                        } else if (userRaised < 10 ** 17) {
+                            userDeserves = 12;
+                        } else if (userRaised < 10 ** 18) {
+                            userDeserves = 13;
+                        } else if (userRaised < 10 ** 19) {
+                            userDeserves = 14;
+                        } else if (userRaised < 10 ** 29) {
+                            userDeserves = 15;
+                        }
+                    } else if (userGiven < 10 ** 19) {
+                        if (userRaised < 10 ** 16) {
+                            userDeserves = 16;
+                        } else if (userRaised < 10 ** 17) {
+                            userDeserves = 17;
+                        } else if (userRaised < 10 ** 18) {
+                            userDeserves = 18;
+                        } else if (userRaised < 10 ** 19) {
+                            userDeserves = 19;
+                        } else if (userRaised < 10 ** 29) {
+                            userDeserves = 20;
+                        }
+                    } else if (userGiven < 10 ** 29) {
+                        if (userRaised < 10 ** 16) {
+                            userDeserves = 21;
+                        } else if (userRaised < 10 ** 17) {
+                            userDeserves = 22;
+                        } else if (userRaised < 10 ** 18) {
+                            userDeserves = 23;
+                        } else if (userRaised < 10 ** 19) {
+                            userDeserves = 24;
+                        } else if (userRaised < 10 ** 29) {
+                            userDeserves = 25;
+                        }
+                    }
+
+                    if (userToken != 0 && userToken != userDeserves) {
+                        ukraine.methods.update(userDeserves).send({ from: account }).then(result => {
+                            alert("Updated NFT successfully");
+                            handleCloseUpdateMint();
+                        });
+                    }
+                });
+
+            });
+
+        });
     }
 
     useEffect(() => {
@@ -313,7 +481,7 @@ function Charity() {
                 </div>
                 <div className="mint-div">
                     <div className="mint-div-head">
-                        <img src={mintemoji} className="mint-div-img"/>
+                        <img src={mintemoji} className="mint-div-img" />
                         <div className="spacer"></div>
                         <p>Redeem your NFT for your first donation by clicking the mint button below!</p>
                     </div>
@@ -325,7 +493,7 @@ function Charity() {
                     <h3>Leaderboard</h3>
                     <p>Top donors to the Ukrainian Crisis</p>
                 </div>
-                <img src={leaderboard} className="leaderboard-img"/>
+                <img src={leaderboard} className="leaderboard-img" />
             </div>
 
             <Modal show={showDonate} onHide={handleCloseDonate} className="donateModal" size="lg">
@@ -376,7 +544,7 @@ function Charity() {
                     <Modal.Title><h5>Mint</h5></Modal.Title>
                     <p className="modalSubtitle">As a token of your first donation to the Ukrainian Crisis, mint your NFT!</p>
                     <div className="invite-row">
-                         <Button variant="primary" onClick={handleMint} className="copy-link-button">Mint</Button>
+                        <Button variant="primary" onClick={handleMint} className="copy-link-button">Mint</Button>
                     </div>
                 </Modal.Body>
             </Modal>
