@@ -42,7 +42,7 @@ h1 {
     justify-content: space-between;
 }
 
-.donate-button, .raise-button, .send-button, .copy-link-button, .mint-button {
+.donate-button, .raise-button, .send-button, .copy-link-button {
     border-radius: 50px;
     border: 2px solid #00F0FF;
     padding: .3rem 1.5rem;
@@ -59,6 +59,7 @@ h1 {
     color: white;
     font-weight: 500;
     font-size: 1rem;
+    margin-top: 2rem;
 }
 
 .send-button {
@@ -179,10 +180,39 @@ h1 {
     padding-top: 2rem;
 }
 
-.lea
+.leaderboard {
+    padding-bottom: 20rem;
+}
+
+.leaderboard-img {
+    padding-top: 2rem;
+    width: 60rem;
+}
 
 .table-titles {
     font-style: bold;
     display: flex;
     flex-direction: row;
+}
+
+.mint-div {
+    background: linear-gradient(90deg, rgba(0, 240, 255, 0.21) 0%, rgba(255, 0, 122, 0) 100%);
+    border-style: solid;
+    border-width: 2px;
+    border-color: #00F0FF;
+    border-radius: 41px;
+    margin-top: 4rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+
+.mint-div-head {
+    display: flex;
+    flex-direction: row;
+}
+
+.mint-div-img {
+    height: 4rem;
 }

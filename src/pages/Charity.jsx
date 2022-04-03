@@ -5,6 +5,8 @@ import Form from 'react-bootstrap/Form';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import "./Charity.css";
+import leaderboard from './leaderboard.png'
+import mintemoji from './blob.gif'
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -349,32 +351,21 @@ function Charity() {
                     <div className="spacer"> </div>
                     <Button onClick={handleShowRaise} className="raise-button">Raise</Button>
                 </div>
-                <Button onClick={handleShowMint} className="mint-button">Mint</Button>
+                <div className="mint-div">
+                    <div className="mint-div-head">
+                        <img src={mintemoji} className="mint-div-img"/>
+                        <div className="spacer"></div>
+                        <p>Redeem your NFT for your first donation!!</p>
+                    </div>
+                    <Button onClick={handleShowMint} className="mint-button">Mint</Button>
+                </div>
             </div>
             <div className="leaderboard">
                 <div className="leaderboard-header">
                     <h3>Leaderboard</h3>
                     <p>Top donors to the Ukrainian Crisis</p>
                 </div>
-                <Tabs
-                    defaultActiveKey="given"
-                    transition={false}
-                    id="noanim-tab-example"
-                    className="mb-3"
-                >
-                    <Tab eventKey="given" title="Given">
-                        <div>
-                            <div className="table-titles">
-                                <div className="table-title-spacer"></div>
-                                <p>Address</p>
-                                <p>Amount given</p>
-                            </div>
-                        </div>
-                    </Tab>
-                    <Tab eventKey="raised" title="Raised">
-                        <div></div>
-                    </Tab>
-                </Tabs>
+                <img src={leaderboard} className="leaderboard-img"/>
             </div>
 
             <Modal show={showDonate} onHide={handleCloseDonate} className="donateModal" size="lg">
