@@ -240,6 +240,26 @@ h1 {
     background-clip: text; 
 }
 
+.user-NFT {
+    padding-bottom: 15rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.nft-desc {
+    background: linear-gradient(90deg, #00F0FF 10%, #5773FF 40%, #FF007A 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text; 
+}
+
+.opensea {
+    text-decoration: none;
+    color: white;
+    font-size: 2rem;
+}
+
 .promptUpdate, .promptMint {
     display: none;
 }
@@ -265,5 +285,5 @@ h1 {
 
 .userNFT {
     display: none;
-    width: 300px;
+    width: 15rem;
 }
