@@ -2,7 +2,7 @@ import Web3 from "web3";
 
 const web3 = new Web3(Web3.givenProvider || 'http://localhost:3000');
 
-const address = '0x933F4444870D882c1d0465Ce9d6f03f1100ecd5d';
+const address = '0x0dF7C73692f825AD5Fdd8A942d7901ae71ad8E21';
 
 const abi = [
 	{
