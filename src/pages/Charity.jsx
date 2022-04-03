@@ -22,7 +22,7 @@ function Charity() {
     const [copied, setCopied] = useState(false);
     const [updateMint, setUpdateMint] = useState(false);
     const [referrer, setReferrer] = useState(null);
-
+    const [userDeserves, setUserDeserves] = useState(0);
 
     const checkWalletIsConnected = async () => {
         const { ethereum } = window;
@@ -283,6 +283,11 @@ function Charity() {
     const handleCloseMint = () => setShowMint(false);
     const handleShowMint = () => setShowMint(true);
 
+    // Update mint modal
+    const [showUpdateMint, setShowUpdateMint] = useState(false);
+    const handleCloseUpdateMint = () => setShowUpdateMint(false);
+    const handleShowUpdateMint = () => setShowUpdateMint(true);
+
     return (
         <div className="container">
             <div className="wallet-connect">
@@ -361,12 +366,21 @@ function Charity() {
                 </Modal.Header>
                 <Modal.Body className="justify-content-center modalBody">
                     <Modal.Title><h5>Mint</h5></Modal.Title>
-                    {copied ? <p className="modalSubtitle">As a token of your first donation to the Ukrainian Crisis, mint your NFT!</p>
-                        : <p className="modalSubtitle">Update your NFT here to reflect your latest contributions!</p>}
+                    <p className="modalSubtitle">As a token of your first donation to the Ukrainian Crisis, mint your NFT!</p>
                     <div className="invite-row">
-                        {copied ? <Button variant="primary" className="copy-link-button">Update mint</Button> :
-                            <Button variant="primary" className="copy-link-button">Mint</Button>
-                        }
+                         <Button variant="primary" className="copy-link-button">Mint</Button>
+                    </div>
+                </Modal.Body>
+            </Modal>
+
+            <Modal show={showUpdateMint} onHide={handleCloseUpdateMint} className="mintModal" size="lg">
+                <Modal.Header closeButton className="modalHeader btn-close-white">
+                </Modal.Header>
+                <Modal.Body className="justify-content-center modalBody">
+                    <Modal.Title><h5>Update Mint</h5></Modal.Title>
+                    <p className="modalSubtitle">Your additional donation to the Ukrainian Crisis is much appreciated! Update your NFT to reflect the latest contrubutions.</p>
+                    <div className="invite-row">
+                        <Button variant="primary" className="copy-link-button">Update mint</Button>
                     </div>
                 </Modal.Body>
             </Modal>
