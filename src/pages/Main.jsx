@@ -12,7 +12,7 @@ function Main() {
                 <p>Give effectively to the global causes you care about.</p>
             </div>
             <div className="prop">
-                <h5>A personalized NFT will represent your contribution permenantly on the blockchain.</h5>
+                <h5>Plus a personalized NFT to represent your contribution permenantly on the blockchain.</h5>
             </div>
             <div className="causes">
                 <h4>Causes we support</h4>
@@ -43,6 +43,9 @@ function Main() {
                 <h4>Leaderboard</h4>
                 <p>The top givers, globally.</p>
                 <img src={leaderboard} className="leaderboard-img"/>
+            </div>
+            <div className="NFT-grid">
+
             </div>
         </div>
     );
