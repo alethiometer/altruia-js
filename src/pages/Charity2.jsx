@@ -624,7 +624,7 @@ function Charity2() {
                 <p>Researching and shortlisting the global charities that save the most lives per dollar.</p>
                 <div className="buttons">
                     <Button onClick={handleShowDonate} className="donate-button">Donate</Button>
-                    <div className="spacer"> </div>
+                    <div className="spacer-2"> </div>
                     <Button onClick={handleShowRaise} className="raise-button">Raise</Button>
                 </div>
 
