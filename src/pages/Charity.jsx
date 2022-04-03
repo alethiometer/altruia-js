@@ -40,6 +40,7 @@ function Charity() {
         if (accounts.length !== 0) {
             const account = accounts[0];
             setAccount(account);
+            checkAccount(account);
         } else {
             console.log("No authorized account yet.")
         }
@@ -50,6 +51,19 @@ function Charity() {
             let totalRaised = parseInt(result)/(10**18);
             let raisedText = totalRaised.toString() +" total ETH raised"
             document.getElementById("totalRaisedLabel").innerHTML = raisedText;
+        });
+    }
+ 
+    const checkAccount = async(_account) => {
+        donations.methods.getGiven("0x92644E66DACA94F720875A93a8df011CB17dbFC0", _account).call().then(result => {
+            let myTotalGiven = parseInt(result)/(10**18);
+            let givenText = "Donated: "+myTotalGiven.toString()+" ETH";
+            document.getElementById("myUserGiven").innerHTML = givenText;
+        });
+        donations.methods.getRaised("0x92644E66DACA94F720875A93a8df011CB17dbFC0", _account).call().then(result2 => {
+            let myTotalRaised = parseInt(result2)/(10**18);
+            let raisedText = "Raised: "+myTotalRaised.toString()+" ETH";
+            document.getElementById("myUserRaised").innerHTML = raisedText;
         });
     }
 
@@ -452,11 +466,12 @@ function Charity() {
             });
 
         });
-    }
+    } 
 
     useEffect(() => {
-        checkWalletIsConnected();
-        checkTotalRaised();
+        checkWalletIsConnected().then(() => {
+            checkTotalRaised();
+        });
     }, [])
 
     // Donate modal
@@ -484,8 +499,8 @@ function Charity() {
             <div className="wallet-connect">
                 {account ? <div>
                         <Button className="wallet-connected">Wallet connected </Button>
-                        <p>Total given: <span id="userGiven">0</span></p>
-                        <p>Total raised: <span id="userRaised">0</span></p>
+                        <p id="myUserGiven">Total given: </p>
+                        <p id="myUserRaised">Total raised:</p>
                     </div>
                     : <div>
                         <Button onClick={connectWalletHandler} className="wallet-not-connected">Connect wallet</Button>
