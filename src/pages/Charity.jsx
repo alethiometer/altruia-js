@@ -11,6 +11,7 @@ import FormControl from 'react-bootstrap/FormControl';
 
 import Web3 from "web3";
 import donations from "../donations";
+import ukraine from "../ukraine";
 
 function Charity() {
     const [account, setAccount] = useState(null);
@@ -52,7 +53,6 @@ function Charity() {
     }
 
     const handleDonate = async () => {
-        const donationsContract = donations;
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
 
@@ -63,8 +63,9 @@ function Charity() {
         } else {
             const amount = parseFloat(document.getElementById("inputAmount").value);
 
-            donationsContract.methods.donate("0x165CD37b4C644C2921454429E7F9358d18A45e14").send({ from: account, value: amount * 1000000000000000000 }).then(result => {
+            donations.methods.donate("0x165CD37b4C644C2921454429E7F9358d18A45e14").send({ from: account, value: amount * 1000000000000000000 }).then(result => {
                 alert('Donated ' + toString(amount) + ' ETH successfully');
+                
             }).catch((error) => {
                 alert(error);
             });

@@ -2,7 +2,7 @@ import Web3 from "web3";
 
 const web3 = new Web3(Web3.givenProvider || 'http://localhost:3000');
 
-const address = '0x933F4444870D882c1d0465Ce9d6f03f1100ecd5d';
+const address = '0x29B3db0FDf7Acbc4B62Ef57a3206C2515768AFea';
 
 const abi = [
 	{
@@ -12,12 +12,6 @@ const abi = [
 				"indexed": false,
 				"internalType": "address",
 				"name": "charity",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "address",
-				"name": "erc721",
 				"type": "address"
 			}
 		],
@@ -124,11 +118,6 @@ const abi = [
 				"internalType": "address",
 				"name": "_charity",
 				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_erc721",
-				"type": "address"
 			}
 		],
 		"name": "addCharity",
@@ -160,11 +149,6 @@ const abi = [
 				"internalType": "bool",
 				"name": "approved",
 				"type": "bool"
-			},
-			{
-				"internalType": "contract ERC721",
-				"name": "erc721",
-				"type": "address"
 			}
 		],
 		"stateMutability": "view",
