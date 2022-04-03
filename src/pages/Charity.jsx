@@ -38,16 +38,30 @@ function Charity() {
         if (accounts.length !== 0) {
             const account = accounts[0];
             setAccount(account);
+            checkAccount(account);
         } else {
             console.log("No authorized account yet.")
         }
     }
 
     const checkTotalRaised = async() => {
-        donations.methods.getTotalRaised("0x92644E66DACA94F720875A93a8df011CB17dbFC0").call().then(result => {
+        donations.methods.getTotalRaised("0x165CD37b4C644C2921454429E7F9358d18A45e14").call().then(result => {
             let totalRaised = parseInt(result)/(10**18);
             let raisedText = totalRaised.toString() +" total ETH raised"
             document.getElementById("totalRaisedLabel").innerHTML = raisedText;
+        });
+    }
+ 
+    const checkAccount = async(_account) => {
+        donations.methods.getGiven("0x165CD37b4C644C2921454429E7F9358d18A45e14", _account).call().then(result => {
+            let myTotalGiven = parseInt(result)/(10**18);
+            let givenText = "Donated: "+myTotalGiven.toString()+" ETH";
+            document.getElementById("myUserGiven").innerHTML = givenText;
+        });
+        donations.methods.getRaised("0x165CD37b4C644C2921454429E7F9358d18A45e14", _account).call().then(result2 => {
+            let myTotalRaised = parseInt(result2)/(10**18);
+            let raisedText = "Raised: "+myTotalRaised.toString()+" ETH";
+            document.getElementById("myUserRaised").innerHTML = raisedText;
         });
     }
 
@@ -75,9 +89,9 @@ function Charity() {
         //getters
         ukraine.methods.getTokenByUser(account).call().then(result => {
             let userToken = parseInt(result);
-            donations.methods.getGiven("0x92644E66DACA94F720875A93a8df011CB17dbFC0", account).call().then(result => {
+            donations.methods.getGiven("0x165CD37b4C644C2921454429E7F9358d18A45e14", account).call().then(result => {
                 let userGiven = parseInt(result);
-                donations.methods.getRaised("0x92644E66DACA94F720875A93a8df011CB17dbFC0", account).call().then(result => {
+                donations.methods.getRaised("0x165CD37b4C644C2921454429E7F9358d18A45e14", account).call().then(result => {
                     let userRaised = parseInt(result);
                     const amount = parseFloat(document.getElementById("inputAmount").value);
 
@@ -85,7 +99,7 @@ function Charity() {
                     if (urlParams.has('ref')) {
                         let referral = urlParams.get("ref");
 
-                        donations.methods.donateWithRefferral("0x92644E66DACA94F720875A93a8df011CB17dbFC0", referral).send({ from: account, value: amount * 1000000000000000000 }).then(result => {
+                        donations.methods.donateWithRefferral("0x165CD37b4C644C2921454429E7F9358d18A45e14", referral).send({ from: account, value: amount * 1000000000000000000 }).then(result => {
 
                             handleCloseDonate();
                             userGiven += amount * 1000000000000000000;
@@ -176,7 +190,7 @@ function Charity() {
                         //no referral
                     } else {
 
-                        donations.methods.donate("0x92644E66DACA94F720875A93a8df011CB17dbFC0").send({ from: account, value: amount * 1000000000000000000 }).then(result => {
+                        donations.methods.donate("0x165CD37b4C644C2921454429E7F9358d18A45e14").send({ from: account, value: amount * 1000000000000000000 }).then(result => {
 
                             handleCloseDonate();
                             userGiven += amount * 1000000000000000000;
@@ -281,9 +295,9 @@ function Charity() {
 
         ukraine.methods.getTokenByUser(account).call().then(result => {
             let userToken = parseInt(result);
-            donations.methods.getGiven("0x92644E66DACA94F720875A93a8df011CB17dbFC0", account).call().then(result => {
+            donations.methods.getGiven("0x165CD37b4C644C2921454429E7F9358d18A45e14", account).call().then(result => {
                 let userGiven = parseInt(result);
-                donations.methods.getRaised("0x92644E66DACA94F720875A93a8df011CB17dbFC0", account).call().then(result => {
+                donations.methods.getRaised("0x165CD37b4C644C2921454429E7F9358d18A45e14", account).call().then(result => {
                     let userRaised = parseInt(result);
 
                     var userDeserves = 0;
@@ -367,9 +381,9 @@ function Charity() {
     const handleUpdateMint = async () => {
         ukraine.methods.getTokenByUser(account).call().then(result => {
             let userToken = parseInt(result);
-            donations.methods.getGiven("0x92644E66DACA94F720875A93a8df011CB17dbFC0", account).call().then(result => {
+            donations.methods.getGiven("0x165CD37b4C644C2921454429E7F9358d18A45e14", account).call().then(result => {
                 let userGiven = parseInt(result);
-                donations.methods.getRaised("0x92644E66DACA94F720875A93a8df011CB17dbFC0", account).call().then(result => {
+                donations.methods.getRaised("0x165CD37b4C644C2921454429E7F9358d18A45e14", account).call().then(result => {
                     let userRaised = parseInt(result);
 
                     var userDeserves = 0;
@@ -450,11 +464,12 @@ function Charity() {
             });
 
         });
-    }
+    } 
 
     useEffect(() => {
-        checkWalletIsConnected();
-        checkTotalRaised();
+        checkWalletIsConnected().then(() => {
+            checkTotalRaised();
+        });
     }, [])
 
     // Donate modal
@@ -482,8 +497,8 @@ function Charity() {
             <div className="wallet-connect">
                 {account ? <div className="account-container">
                         <Button className="wallet-connected">Wallet connected </Button>
-                        <p className="account-info">$<span id="userGiven">0 ETH given</span></p>
-                        <p className="account-info">$<span id="userRaised">0 ETH raised</span></p>
+                        <p id="myUserGiven">Total given: </p>
+                        <p id="myUserRaised">Total raised:</p>
                     </div>
                     : <div>
                         <Button onClick={connectWalletHandler} className="wallet-not-connected">Connect wallet</Button>

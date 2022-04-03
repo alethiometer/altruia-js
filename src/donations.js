@@ -2,9 +2,53 @@ import Web3 from "web3";
 
 const web3 = new Web3(Web3.givenProvider || 'http://localhost:3000');
 
-const address = '0x29B3db0FDf7Acbc4B62Ef57a3206C2515768AFea';
+const address = '0xdA01aa3341C6177B8FD6d8352328566247aC40ae';
 
 const abi = [
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_charity",
+				"type": "address"
+			}
+		],
+		"name": "addCharity",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_charity",
+				"type": "address"
+			}
+		],
+		"name": "donate",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_charity",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_refferer",
+				"type": "address"
+			}
+		],
+		"name": "donateWithRefferral",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
 	{
 		"anonymous": false,
 		"inputs": [
@@ -94,6 +138,46 @@ const abi = [
 		"type": "event"
 	},
 	{
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_charity",
+				"type": "address"
+			}
+		],
+		"name": "saveFunds",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "withdraw",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"anonymous": false,
 		"inputs": [
 			{
@@ -111,19 +195,6 @@ const abi = [
 		],
 		"name": "Withdrawl",
 		"type": "event"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_charity",
-				"type": "address"
-			}
-		],
-		"name": "addCharity",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
 	},
 	{
 		"inputs": [
@@ -152,37 +223,6 @@ const abi = [
 			}
 		],
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_charity",
-				"type": "address"
-			}
-		],
-		"name": "donate",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_charity",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_refferer",
-				"type": "address"
-			}
-		],
-		"name": "donateWithRefferral",
-		"outputs": [],
-		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
@@ -292,46 +332,6 @@ const abi = [
 			}
 		],
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "renounceOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_charity",
-				"type": "address"
-			}
-		],
-		"name": "saveFunds",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "transferOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "withdraw",
-		"outputs": [],
-		"stateMutability": "nonpayable",
 		"type": "function"
 	}
 ];
