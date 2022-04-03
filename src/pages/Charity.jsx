@@ -659,7 +659,7 @@ function Charity() {
                     <img src={noNft} className="userNFT" id="nft0" />
                 </div>
                 <div>
-                    <a href="https://testnets.opensea.io/collection/altruia-x-ukraine-donation-collection-v2">View Colletion on OpenSea</a>
+                    <a href="https://testnets.opensea.io/collection/altruia-x-ukraine-donation-collection-v2" target="_blank">View Colletion on OpenSea</a>
                 </div>
 
                 <div className="mint-div promptMint" id="promptMint">
