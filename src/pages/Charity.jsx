@@ -10,6 +10,8 @@ import FormControl from 'react-bootstrap/FormControl';
 import Web3 from "web3";
 import donations from "../donations";
 
+let myAccount;
+
 function Charity() {
     const [account, setAccount] = useState(null);
 
@@ -32,11 +34,49 @@ function Charity() {
 
         try {
             const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+            myAccount = accounts[0];
             setAccount(accounts[0]);
         } catch (err) {
             console.log(err);
             alert("There was an issue connecting your wallet. Please try again!")
         }
+    }
+
+    const handleDonate = async () => {
+        const donationsContract = donations;
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+
+        if (urlParams.has('ref')) {
+            const referral = urlParams.get("ref");
+
+            //...
+        } else {
+            const amount = parseFloat(document.getElementById("inputAmount").value);
+
+            donationsContract.methods.donate("0x165CD37b4C644C2921454429E7F9358d18A45e14").send({ from: myAccount, value: amount * 1000000000000000000 }).then(result => {
+                alert('Donated ' + toString(amount) + ' ETH successfully');
+            }).catch((error) => {
+                alert(error);
+            });
+            
+
+        }
+
+        /*
+
+        const amount = parseInt(e.target.elements[0].value);
+        if (amount > 0 && amount < 20) {
+            matreshki.methods.mint(accounts[0],amount).send({from: accounts[0], value: 0.03 * 1000000000000000000 * amount}).then(result => {
+            $mintResult.innerHTML = 'Matreshki minted successfully';
+            }).catch(() => {
+            $mintResult.innerHTML = `Ooops, there was a problem`;
+            });
+        } else {
+            $mintResult.innerHTML = 'Can only mint 1-20 matreshkas';
+        }
+
+        */
     }
 
     useEffect(() => {
@@ -85,12 +125,12 @@ function Charity() {
 
                 <Form>
                     <Form.Group className="mb-3 d-flex justify-content-center" controlId="exampleForm.ControlInput1">
-                        <Form.Control type="text" className="amountInput shadow-none mb-3" placeholder="Amount" />
+                        <Form.Control type="text" className="amountInput shadow-none mb-3" placeholder="Amount" id="inputAmount" />
                         <Form.Label className="mb-3">
                             ETH
                         </Form.Label>
                     </Form.Group>
-                    <Button variant="primary" onClick={handleCloseDonate} className="send-button">
+                    <Button variant="primary" onClick={handleDonate} className="send-button">
                         Send
                     </Button>
                 </Form>
@@ -101,7 +141,7 @@ function Charity() {
             </Modal>
 
             <Modal show={showRaise} onHide={handleCloseRaise} className="raiseModal">
-            <Modal.Header closeButton className="modalHeader btn-close-white">
+                <Modal.Header closeButton className="modalHeader btn-close-white">
                 </Modal.Header>
                 <Modal.Body className="justify-content-center modalBody">
                     <Modal.Title><h5>Raise</h5></Modal.Title>
