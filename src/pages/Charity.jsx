@@ -10,8 +10,6 @@ import FormControl from 'react-bootstrap/FormControl';
 import Web3 from "web3";
 import donations from "../donations";
 
-let myAccount;
-
 function Charity() {
     const [account, setAccount] = useState(null);
     const [copied, setCopied] = useState(false);
@@ -44,7 +42,6 @@ function Charity() {
 
         try {
             const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-            myAccount = accounts[0];
             setAccount(accounts[0]);
         } catch (err) {
             console.log(err);
@@ -64,7 +61,7 @@ function Charity() {
         } else {
             const amount = parseFloat(document.getElementById("inputAmount").value);
 
-            donationsContract.methods.donate("0x165CD37b4C644C2921454429E7F9358d18A45e14").send({ from: myAccount, value: amount * 1000000000000000000 }).then(result => {
+            donationsContract.methods.donate("0x165CD37b4C644C2921454429E7F9358d18A45e14").send({ from: account, value: amount * 1000000000000000000 }).then(result => {
                 alert('Donated ' + toString(amount) + ' ETH successfully');
             }).catch((error) => {
                 alert(error);
@@ -72,21 +69,7 @@ function Charity() {
             
 
         }
-
-        /*
-
-        const amount = parseInt(e.target.elements[0].value);
-        if (amount > 0 && amount < 20) {
-            matreshki.methods.mint(accounts[0],amount).send({from: accounts[0], value: 0.03 * 1000000000000000000 * amount}).then(result => {
-            $mintResult.innerHTML = 'Matreshki minted successfully';
-            }).catch(() => {
-            $mintResult.innerHTML = `Ooops, there was a problem`;
-            });
-        } else {
-            $mintResult.innerHTML = 'Can only mint 1-20 matreshkas';
-        }
-
-        */
+        
     }
 
     useEffect(() => {
