@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Tabs from 'react-bootstrap/Tabs';
+import Tab from 'react-bootstrap/Tab';
 import "./Charity.css";
 import { useState, useEffect } from "react";
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -66,10 +68,10 @@ function Charity() {
             }).catch((error) => {
                 alert(error);
             });
-            
+
 
         }
-        
+
     }
 
     useEffect(() => {
@@ -83,7 +85,7 @@ function Charity() {
 
     // Raise modal
     const [showRaise, setShowRaise] = useState(false);
-    const handleCloseRaise = () => {setShowRaise(false); setCopied(false);}
+    const handleCloseRaise = () => { setShowRaise(false); setCopied(false); }
     const handleShowRaise = () => setShowRaise(true);
 
     return (
@@ -103,9 +105,29 @@ function Charity() {
                 </div>
             </div>
             <div className="leaderboard">
-                <h3>Leaderboard</h3>
-                <p>Top donors to the Ukrainian Crisis</p>
-                {/* implement */}
+                <div className="leaderboard-header">
+                    <h3>Leaderboard</h3>
+                    <p>Top donors to the Ukrainian Crisis</p>
+                </div>
+                <Tabs
+                    defaultActiveKey="given"
+                    transition={false}
+                    id="noanim-tab-example"
+                    className="mb-3"
+                >
+                    <Tab eventKey="given" title="Given">
+                        <div>
+                            <div className="table-titles">
+                                <div className="table-title-spacer"></div>
+                                <p>Address</p>
+                                <p>Amount given</p>
+                            </div>
+                        </div>
+                    </Tab>
+                    <Tab eventKey="raised" title="Raised">
+                    <div></div>
+                    </Tab>
+                </Tabs>
             </div>
 
             <Modal show={showDonate} onHide={handleCloseDonate} className="donateModal" size="lg">
@@ -138,12 +160,12 @@ function Charity() {
                         <p className="inviteLink">https://altruia.com/ukrainian-crisis?ref=0x123978561298376128346</p>
                         <div className="spacer"></div>
                         {copied ? <Button variant="primary" className="copy-link-button">Copied</Button> :
-                        <Button variant="primary" onClick={() => {
-                            navigator.clipboard.writeText("https://altruia.com/ukrainian-crisis?ref=0x123978561298376128346");
-                            setCopied(true);
-                        }} className="copy-link-button">
-                            Copy
-                        </Button>
+                            <Button variant="primary" onClick={() => {
+                                navigator.clipboard.writeText("https://altruia.com/ukrainian-crisis?ref=0x123978561298376128346");
+                                setCopied(true);
+                            }} className="copy-link-button">
+                                Copy
+                            </Button>
                         }
                     </div>
                 </Modal.Body>
