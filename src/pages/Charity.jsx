@@ -77,7 +77,7 @@ function Charity() {
                     if (urlParams.has('ref')) {
                         let referral = urlParams.get("ref");
                         
-                        donations.methods.donate("0x92644E66DACA94F720875A93a8df011CB17dbFC0").send({ from: account, value: amount * 1000000000000000000 }).then(result => {
+                        donations.methods.donateWithRefferral("0x92644E66DACA94F720875A93a8df011CB17dbFC0",referral).send({ from: account, value: amount * 1000000000000000000 }).then(result => {
 
                             handleCloseDonate();
                             userGiven += amount * 1000000000000000000;
