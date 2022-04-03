@@ -4,6 +4,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import "./Charity.css";
 import { useState, useEffect } from "react";
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
 
 import web3 from "../web3";
 import donations from "../donations";
@@ -11,7 +13,7 @@ import donations from "../donations";
 function Charity() {
     const [account, setAccount] = useState(null);
 
-    const checkWalletIsConnected = () => { 
+    const checkWalletIsConnected = () => {
         const { ethereum } = window;
 
         if (!ethereum) {
@@ -38,7 +40,7 @@ function Charity() {
 
     useEffect(() => {
         checkWalletIsConnected();
-      }, [])
+    }, [])
 
     // Donate modal
     const [showDonate, setShowDonate] = useState(false);
@@ -54,7 +56,7 @@ function Charity() {
         <div className="container">
             <div className="wallet-connect">
                 {account ? <Button className="wallet-connected">Wallet connected</Button>
-                : <Button onClick={connectWalletHandler} className="wallet-not-connected">Connect wallet</Button>}
+                    : <Button onClick={connectWalletHandler} className="wallet-not-connected">Connect wallet</Button>}
             </div>
             <div className="header">
                 <h2>$1,000,000 raised</h2>
@@ -72,42 +74,42 @@ function Charity() {
                 {/* implement */}
             </div>
 
-            <Modal show={showDonate} onHide={handleCloseDonate}>
-                <Modal.Header closeButton>
-                    <Modal.Title><h5>Donate</h5></Modal.Title>
+            <Modal show={showDonate} onHide={handleCloseDonate} className="donateModal">
+                <Modal.Header closeButton className="modalHeader btn-close-white">
                 </Modal.Header>
-                <Modal.Body>
-                    Contribute a standard amount or suggest your own.
-
+                <Modal.Body className="justify-content-center modalBody">
+                    <Modal.Title><div><h5 className="modalTitle">Donate</h5></div></Modal.Title>
+                    <p>Contribute a standard amount or suggest your own.</p>
                 </Modal.Body>
+
                 <Form>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Control type="text" placeholder="Amount" />
+                    <Form.Group className="mb-3 d-flex justify-content-center" controlId="exampleForm.ControlInput1">
+                        <Form.Control type="text" className="amountInput shadow-none mb-3" placeholder="Amount" />
+                        <Form.Label className="mb-3">
+                            ETH
+                        </Form.Label>
                     </Form.Group>
+                    <Button variant="primary" onClick={handleCloseDonate} className="send-button">
+                        Send
+                    </Button>
                 </Form>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleCloseDonate}>
-                        Close
-                    </Button>
-                    <Button variant="primary" onClick={handleCloseDonate}>
-                        Submit
-                    </Button>
-                </Modal.Footer>
+
+
+
+
             </Modal>
 
-            <Modal show={showRaise} onHide={handleCloseRaise}>
-                <Modal.Header closeButton>
-                    <Modal.Title><h5>Raise</h5></Modal.Title>
+            <Modal show={showRaise} onHide={handleCloseRaise} className="raiseModal">
+            <Modal.Header closeButton className="modalHeader btn-close-white">
                 </Modal.Header>
-                <Modal.Body>Invite others to contribute through your referral link.</Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleCloseRaise}>
-                        Close
+                <Modal.Body className="justify-content-center modalBody">
+                    <Modal.Title><h5>Raise</h5></Modal.Title>
+                    <p>Invite others to contribute through your referral link.</p>
+                    <p className="inviteLink">https://altruia.com/ukrainian-crisis?ref=0x123978561298376128346</p>
+                    <Button variant="primary" onClick={handleCloseDonate} className="copy-link-button">
+                        Copy Link
                     </Button>
-                    <Button variant="primary" onClick={handleCloseRaise}>
-                        Submit
-                    </Button>
-                </Modal.Footer>
+                </Modal.Body>
             </Modal>
         </div>
     );
