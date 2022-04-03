@@ -87,12 +87,12 @@ function Charity() {
 
             donations.methods.getGiven("0x165CD37b4C644C2921454429E7F9358d18A45e14", _account).call().then(result => {
                 let myTotalGiven = parseInt(result) / (10 ** 18);
-                let givenText = "You've given $" + myTotalGiven.toString() + " ETH.";
+                let givenText = "You've given " + myTotalGiven.toString() + " ETH.";
                 document.getElementById("myUserGiven").innerHTML = givenText;
 
                 donations.methods.getRaised("0x165CD37b4C644C2921454429E7F9358d18A45e14", _account).call().then(result2 => {
                     let myTotalRaised = parseInt(result2) / (10 ** 18);
-                    let raisedText = "You've raised $" + myTotalRaised.toString() + " ETH.";
+                    let raisedText = "You've raised " + myTotalRaised.toString() + " ETH.";
                     document.getElementById("myUserRaised").innerHTML = raisedText;
 
                     let userGiven = myTotalGiven * (10 ** 18);
@@ -684,7 +684,7 @@ function Charity() {
                     </div>
                         : <h5>You have not donated or raised quite yet. Get started above!</h5>}
                         <div>
-                    <a href="https://testnets.opensea.io/collection/altruia-x-ukraine-donation-collection-v2" className="opensea">View the collection on OpenSea!</a>
+                    <a href="https://testnets.opensea.io/collection/altruia-x-ukraine-donation-collection-v2" className="opensea" target="_blank">View the collection on OpenSea!</a>
                     </div>
                 </div>
                 </div>

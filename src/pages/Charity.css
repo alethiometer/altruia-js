@@ -255,9 +255,9 @@ h1 {
 }
 
 .opensea {
-    text-decoration: none;
+    text-decoration: underline;
     color: white;
-    font-size: 2rem;
+    font-size: 1.3rem;
 }
 
 .promptUpdate, .promptMint {
