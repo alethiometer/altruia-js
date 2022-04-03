@@ -484,8 +484,8 @@ function Charity() {
             <div className="wallet-connect">
                 {account ? <div>
                         <Button className="wallet-connected">Wallet connected </Button>
-                        <p>Total given: {}</p>
-                        <p>Total raised: {}</p>
+                        <p>Total given: <span id="userGiven">0</span></p>
+                        <p>Total raised: <span id="userRaised">0</span></p>
                     </div>
                     : <div>
                         <Button onClick={connectWalletHandler} className="wallet-not-connected">Connect wallet</Button>
