@@ -72,9 +72,7 @@ function Charity() {
 
                 //if hasn't minted, mint
                 
-                if() {
-
-                }
+                
                 handleShowMint();
 
                 //if minted but able to update, update
