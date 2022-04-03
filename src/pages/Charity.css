@@ -179,7 +179,14 @@ h1 {
     padding-top: 2rem;
 }
 
-.lea
+.leaderboard {
+    padding-bottom: 20rem;
+}
+
+.leaderboard-img {
+    padding-top: 2rem;
+    width: 60rem;
+}
 
 .table-titles {
     font-style: bold;

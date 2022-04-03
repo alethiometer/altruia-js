@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import "./Charity.css";
+import leaderboard from './leaderboard.png'
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -128,25 +129,7 @@ function Charity() {
                     <h3>Leaderboard</h3>
                     <p>Top donors to the Ukrainian Crisis</p>
                 </div>
-                <Tabs
-                    defaultActiveKey="given"
-                    transition={false}
-                    id="noanim-tab-example"
-                    className="mb-3"
-                >
-                    <Tab eventKey="given" title="Given">
-                        <div>
-                            <div className="table-titles">
-                                <div className="table-title-spacer"></div>
-                                <p>Address</p>
-                                <p>Amount given</p>
-                            </div>
-                        </div>
-                    </Tab>
-                    <Tab eventKey="raised" title="Raised">
-                    <div></div>
-                    </Tab>
-                </Tabs>
+                <img src={leaderboard} className="leaderboard-img"/>
             </div>
 
             <Modal show={showDonate} onHide={handleCloseDonate} className="donateModal" size="lg">

@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import "./Main.css";
+import leaderboard from './leaderboard-overall.png'
 
 function Main() {
     return (
@@ -41,7 +42,7 @@ function Main() {
             <div className="leaderboard">
                 <h4>Leaderboard</h4>
                 <p>The top givers, globally.</p>
-                {/* implement */}
+                <img src={leaderboard} className="leaderboard-img"/>
             </div>
         </div>
     );
