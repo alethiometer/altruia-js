@@ -20,8 +20,6 @@ import ukraine from "../ukraine";
 function Charity() {
     const [account, setAccount] = useState(null);
     const [copied, setCopied] = useState(false);
-    const [updateMint, setUpdateMint] = useState(false);
-    const [referrer, setReferrer] = useState(null);
     const [userDeserves, setUserDeserves] = useState(0);
     const [userTokens, setUserTokens] = useState(0);
 
@@ -482,10 +480,10 @@ function Charity() {
     return (
         <div className="container">
             <div className="wallet-connect">
-                {account ? <div>
+                {account ? <div className="account-container">
                         <Button className="wallet-connected">Wallet connected </Button>
-                        <p>Total given: <span id="userGiven">0</span></p>
-                        <p>Total raised: <span id="userRaised">0</span></p>
+                        <p className="account-info">$<span id="userGiven">0 ETH given</span></p>
+                        <p className="account-info">$<span id="userRaised">0 ETH raised</span></p>
                     </div>
                     : <div>
                         <Button onClick={connectWalletHandler} className="wallet-not-connected">Connect wallet</Button>
