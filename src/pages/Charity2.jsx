@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import "./Charity.css";
-import leaderboard from './leaderboard.png'
+import leaderboard from './Group 1055.png'
 import mintemoji from './blob.gif'
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
@@ -689,13 +689,13 @@ function Charity2() {
 
             <div className="leaderboard">
                 <div className="leaderboard-header">
-                    <h3>Leaderboard</h3>
+                    <h3>Leaderboard (Beta)</h3>
                     <p>Top donors to GiveWell</p>
                 </div>
                 <img src={leaderboard} className="leaderboard-img" />
             </div>
             <h4 className="gallery-header">Tokens of appreciation</h4>
-                <p className="gallery-header">The set of NFTs that represent your contribution to GiveWell.</p>
+                <p className="gallery-header">We'll mint an NFT to represent your contribution to GiveWell.</p>
             <div className="NFT-grid">
                 <img src={diamondDiamond} className="NFT"/>
                 <img src={diamondGold} className="NFT"/>

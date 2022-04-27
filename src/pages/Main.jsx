@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import "./Main.css";
-import leaderboard from './leaderboard-overall.png';
+import leaderboard from './Group 1056.png';
 import diamondDiamond from './diamond-diamond.png';
 
 function Main() {
@@ -16,7 +16,7 @@ function Main() {
                 <img src={diamondDiamond} className="logo"/>
                 <div className="spacer"></div>
                 <div>
-                <h5>Plus a personalized NFT to represent your contribution permenantly on the blockchain.</h5>
+                <h5>Plus a personalized NFT that represents your contribution permenantly on the blockchain.</h5>
                 <p>There are five tiers: wood (less than 0.01 ETH), bronze (less than 0.1 ETH), silver (less than 1 ETH), gold (less than 10 ETH), and diamond (more than 10 ETH). The inner symbol corresponds to the amount you've donated. The outer symbol corresponds to the amount you've raised through your referral link.</p>
                 </div>
             </div>
